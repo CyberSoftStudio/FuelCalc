@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:padding="2dp">
+
+    <TextView
+        android:id="@+id/fuelName"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text="Gasoline"
+        android:textColor="@color/WhiteSmoke"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/fuelVol"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:text="27.9"
+        android:textColor="@color/WhiteSmoke"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/unit_name"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:text="l"
+        android:textColor="@color/WhiteSmoke"
+        android:textSize="15dp" />
+
+</LinearLayout>

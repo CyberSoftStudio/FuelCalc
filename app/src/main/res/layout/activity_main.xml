@@ -1,18 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="@color/Coal"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/baseFuel"
+            android:textSize="25sp"
+            android:gravity="center_vertical"
+            android:layout_weight="2"
+            android:textColor="@color/WhiteSmoke"
+            android:text="BASE FUEL"
+            />
+
+        <EditText
+            android:id="@+id/baseVol"
+            android:layout_width="0dp"
+            android:textColor="@color/WhiteSmoke"
+            android:text="1"
+            android:gravity="right"
+            android:textSize="23sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+        <TextView
+            android:layout_width="25dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_height="match_parent"
+            android:textColor="@color/WhiteSmoke"
+            android:text="kg"
+            />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="8"
+        android:padding="10dp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-</android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="45dp"
+        android:textColor="@color/WhiteSmoke"
+        android:background="@color/Black"
+        android:text="Add fuel"
+        android:textSize="20dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"/>
+
+</LinearLayout>
