@@ -2,7 +2,8 @@ package com.example.user2.fuelcalc.model;
 
 import io.realm.RealmObject;
 
-public class FuelType extends RealmObject {
+public class FuelType {
+
     private String name;
     private Double resVolume;
     private String unitName;
@@ -11,7 +12,7 @@ public class FuelType extends RealmObject {
     private Double baseVolume;
     private Double baseCaloricity;
 
-    public FuelType () {
+    public FuelType() {
         name = "NONAME";
         resVolume = -1.0;
         unitName = "NONAME";
@@ -22,7 +23,7 @@ public class FuelType extends RealmObject {
     }
 
 
-    public FuelType (String n, String unitN, double bw, double ppbw, double bv, double bc) {
+    public FuelType(String n, String unitN, double bw, double ppbw, double bv, double bc) {
 
         name = n;
         resVolume = -1.0;
@@ -34,7 +35,7 @@ public class FuelType extends RealmObject {
     }
 
 
-    public FuelType (String n, double resV, String unitN, double bw, double ppbw, double bv, double bc) {
+    public FuelType(String n, double resV, String unitN, double bw, double ppbw, double bv, double bc) {
 
         name = n;
         resVolume = resV;
@@ -44,6 +45,13 @@ public class FuelType extends RealmObject {
         baseVolume = bv;
         baseCaloricity = bc;
     }
+
+
+    public RealmFuelType getRealmFuelType() {
+        return new RealmFuelType(name, resVolume, unitName, baseWeight, pricePerBW, baseVolume,
+                baseCaloricity);
+    }
+
 
     public Double getBaseWeight() {
         return baseWeight;
@@ -76,4 +84,29 @@ public class FuelType extends RealmObject {
     public void setResVolume(Double resVolume) {
         this.resVolume = resVolume;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
+    }
+
+    public void setBaseWeight(Double baseWeight) {
+        this.baseWeight = baseWeight;
+    }
+
+    public void setPricePerBW(Double pricePerBW) {
+        this.pricePerBW = pricePerBW;
+    }
+
+    public void setBaseVolume(Double baseVolume) {
+        this.baseVolume = baseVolume;
+    }
+
+    public void setBaseCaloricity(Double baseCaloricity) {
+        this.baseCaloricity = baseCaloricity;
+    }
+
 }

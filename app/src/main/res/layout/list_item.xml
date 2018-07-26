@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:orientation="horizontal"
-    android:padding="2dp">
+    android:padding="2dp"
+    android:onClick="onClick">
 
     <TextView
         android:id="@+id/fuelName"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:gravity="left"
         android:text="Gasoline"
         android:textColor="@color/WhiteSmoke"
@@ -19,7 +20,7 @@
         android:id="@+id/fuelVol"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.3"
         android:gravity="right"
         android:text="27.9"
         android:textColor="@color/WhiteSmoke"
@@ -27,7 +28,8 @@
 
     <TextView
         android:id="@+id/unit_name"
-        android:layout_width="25dp"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
         android:layout_height="match_parent"
         android:gravity="right"
         android:text="l"

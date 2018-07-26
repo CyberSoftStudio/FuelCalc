@@ -32,6 +32,11 @@ public class FuelListAdapter extends RecyclerView.Adapter <FuelListAdapter.FuelV
         return new FuelViewHolder(tv);
     }
 
+    public void update(List<FuelType> newItems) {
+        this.items = newItems;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull FuelViewHolder holder, int position) {
 

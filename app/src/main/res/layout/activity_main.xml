@@ -18,27 +18,29 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/baseFuel"
+            android:id="@+id/base_fuel"
             android:textSize="25sp"
             android:gravity="center_vertical"
-            android:layout_weight="2"
+            android:layout_weight="0.5"
             android:textColor="@color/WhiteSmoke"
-            android:text="BASE FUEL"
+            android:text="CHOOSE BASE FUEL"
             />
 
         <EditText
-            android:id="@+id/baseVol"
+            android:id="@+id/base_vol"
             android:layout_width="0dp"
             android:textColor="@color/WhiteSmoke"
             android:text="1"
             android:gravity="right"
             android:textSize="23sp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.3"
             android:ems="10"
             android:inputType="numberDecimal" />
         <TextView
-            android:layout_width="25dp"
+            android:id="@+id/base_unit"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
             android:gravity="center"
             android:textSize="18sp"
             android:layout_height="match_parent"
@@ -56,17 +58,5 @@
         android:padding="10dp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-
-    <Button
-        android:id="@+id/add_btn"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="45dp"
-        android:textColor="@color/WhiteSmoke"
-        android:background="@color/Black"
-        android:text="Add fuel"
-        android:textSize="20dp"
-        android:layout_gravity="bottom"
-        android:gravity="center"/>
 
 </LinearLayout>
