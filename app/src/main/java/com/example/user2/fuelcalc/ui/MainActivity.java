@@ -1,5 +1,6 @@
 package com.example.user2.fuelcalc.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,9 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user2.fuelcalc.R;
 import com.example.user2.fuelcalc.fuels.FuelType;
@@ -69,6 +73,25 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getTitle().toString()) {
+            case "item4":
+                Intent myIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                MainActivity.this.startActivity(myIntent);
+                break;
+            default:
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onStart() {
@@ -84,11 +107,10 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
     @Override
     public Double getBaseFuelVolume() {
-        String volumeString = ((EditText)(findViewById(R.id.base_vol))).getText().toString();
+        String volumeString = ((EditText) (findViewById(R.id.base_vol))).getText().toString();
         if (volumeString.equals("")) {
             return 0.0;
-        }
-        else {
+        } else {
             return Double.parseDouble(volumeString);
         }
     }
@@ -98,8 +120,8 @@ public class MainActivity extends AppCompatActivity implements FuelView {
     public void update(List<FuelType> fuelTypes, int baseFuelInd, String newBaseName,
                        String newBaseUnit) {
 
-        ((TextView)(findViewById(R.id.base_fuel))).setText(newBaseName);
-        ((TextView)(findViewById(R.id.base_unit))).setText(newBaseUnit);
+        ((TextView) (findViewById(R.id.base_fuel))).setText(newBaseName);
+        ((TextView) (findViewById(R.id.base_unit))).setText(newBaseUnit);
         recyclerAdapter.basePosition = baseFuelInd;
         recyclerAdapter.update(fuelTypes);
     }
