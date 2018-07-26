@@ -8,12 +8,13 @@ public class FuelPresenterImpl implements FuelPresenter {
 
     private FuelView fuelView;
     private FuelModel fuelModel;
+    private int baseFuelIndex = 0;
 
     public FuelPresenterImpl(FuelView v) {
         fuelView = v;
         fuelModel = new FuelModelImpl();
 
-        calcNewVolAndUpdateView(0, fuelModel.getFuelTypes());
+        calcNewVolAndUpdateView(baseFuelIndex, fuelModel.getFuelTypes());
     }
 
 
@@ -23,6 +24,12 @@ public class FuelPresenterImpl implements FuelPresenter {
 
         fuelView.update(fuelTypes, baseFuelIndex, fuelTypes.get(baseFuelIndex).getName(),
                 fuelTypes.get(baseFuelIndex).getUnitName());
+    }
+
+
+    @Override
+    public void calcNewVolAndUpdateView() {
+        calcNewVolAndUpdateView(baseFuelIndex, fuelModel.getFuelTypes());
     }
 
 
@@ -38,7 +45,7 @@ public class FuelPresenterImpl implements FuelPresenter {
 
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
 
-        int baseFuelIndex = 0;
+        baseFuelIndex = 0;
         for (int i = 0; i < fuelTypes.size(); ++i) {
 
             if (newBaseFuelName.equals(fuelTypes.get(i).getName())) {

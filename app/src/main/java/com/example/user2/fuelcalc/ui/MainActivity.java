@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -44,7 +47,26 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         recyclerAdapter = new FuelListAdapter(new ArrayList<FuelType>());
         recyclerView.setAdapter(recyclerAdapter);
 
+
         fuelPresenter = new FuelPresenterImpl(this);
+
+        EditText baseVolume = findViewById(R.id.base_vol);
+        baseVolume.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                fuelPresenter.calcNewVolAndUpdateView();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
 
@@ -59,10 +81,18 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         fuelPresenter.onDestroy();
     }
 
+
     @Override
     public Double getBaseFuelVolume() {
-        return Double.parseDouble(((EditText)(findViewById(R.id.base_vol))).getText().toString());
+        String volumeString = ((EditText)(findViewById(R.id.base_vol))).getText().toString();
+        if (volumeString.equals("")) {
+            return 0.0;
+        }
+        else {
+            return Double.parseDouble(volumeString);
+        }
     }
+
 
     @Override
     public void update(List<FuelType> fuelTypes, int baseFuelInd, String newBaseName,
