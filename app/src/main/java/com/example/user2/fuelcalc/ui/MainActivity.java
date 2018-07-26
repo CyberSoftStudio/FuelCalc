@@ -141,8 +141,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        recyclerAdapter.basePosition = baseFuelIndex;
+
         recyclerAdapter.update(fuelTypes);
 
-        view.setBackgroundColor(getResources().getColor(R.color.DarkYellow));
     }
 }
