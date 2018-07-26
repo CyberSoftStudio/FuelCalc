@@ -2,8 +2,6 @@ package com.example.user2.fuelcalc.ui;
 
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.user2.fuelcalc.R;
-import com.example.user2.fuelcalc.model.FuelType;
+import com.example.user2.fuelcalc.fuels.FuelType;
 
 import java.util.List;
 

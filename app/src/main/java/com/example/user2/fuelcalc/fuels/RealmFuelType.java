@@ -1,4 +1,4 @@
-package com.example.user2.fuelcalc.model;
+package com.example.user2.fuelcalc.fuels;
 
 import io.realm.RealmObject;
 

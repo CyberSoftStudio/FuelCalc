@@ -1,6 +1,4 @@
-package com.example.user2.fuelcalc.model;
-
-import io.realm.RealmObject;
+package com.example.user2.fuelcalc.fuels;
 
 public class FuelType {
 
