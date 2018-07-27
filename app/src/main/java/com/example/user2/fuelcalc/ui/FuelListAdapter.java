@@ -18,7 +18,11 @@ import java.util.List;
 public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelViewHolder> {
 
     private List<FuelType> items;
-    public int basePosition = -1;
+    private int basePosition = -1;
+
+    public void setBasePosition(int basePosition) {
+        this.basePosition = basePosition;
+    }
 
     public FuelListAdapter(List<FuelType> fitems) {
 
@@ -48,10 +52,10 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         holder.fuelUnitTextView.setText(items.get(position).getUnitName());
 
         if (basePosition == position) {
-            holder.row_linearlayout.setBackgroundColor(holder.row_linearlayout.getContext()
+            holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.DarkYellow));
         } else {
-            holder.row_linearlayout.setBackgroundColor(holder.row_linearlayout.getContext()
+            holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.WhiteSmoke));
         }
 
@@ -68,12 +72,12 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         public TextView fuelNameTextView;
         public TextView fuelVolTextView;
         public TextView fuelUnitTextView;
-        LinearLayout row_linearlayout;
+        LinearLayout rowLinearLayout;
 
 
         public FuelViewHolder(View itemView) {
             super(itemView);
-            row_linearlayout = itemView.findViewById(R.id.linear_layout);
+            rowLinearLayout = itemView.findViewById(R.id.linear_layout);
             fuelNameTextView = itemView.findViewById(R.id.fuelName);
             fuelVolTextView = itemView.findViewById(R.id.fuelVol);
             fuelUnitTextView = itemView.findViewById(R.id.unit_name);

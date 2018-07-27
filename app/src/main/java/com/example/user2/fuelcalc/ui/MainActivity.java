@@ -11,7 +11,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements FuelView {
     FuelListAdapter recyclerAdapter;
     FuelPresenter fuelPresenter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -56,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         EditText baseVolume = findViewById(R.id.base_vol);
         baseVolume.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -65,7 +70,8 @@ public class MainActivity extends AppCompatActivity implements FuelView {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) {
+            }
         });
     }
 
@@ -84,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         fuelPresenter.onDestroy();
         fuelPresenter = null;
     }
-
 
 
     @Override
@@ -126,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
         ((TextView) (findViewById(R.id.base_fuel))).setText(newBaseName);
         ((TextView) (findViewById(R.id.base_unit))).setText(newBaseUnit);
-        recyclerAdapter.basePosition = baseFuelInd;
+        recyclerAdapter.setBasePosition(baseFuelInd);
         recyclerAdapter.update(fuelTypes);
     }
 
@@ -136,6 +141,21 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         String curFuelName = curFuelNameTextView.getText().toString();
 
         fuelPresenter.processClick(curFuelName);
-
     }
+
+    public void onClickExpandButton(View v) {
+        Log.e(LOGTAG, "onClickExpand");
+        ViewGroup parentLayout = (ViewGroup) v.getParent().getParent();
+        View additionalInfo = parentLayout.findViewById(R.id.additional_info);
+        if (additionalInfo.getVisibility() == View.GONE) {
+            parentLayout.findViewById(R.id.additional_info).setVisibility(View.VISIBLE);
+            ((ImageButton) v).setImageResource(R.drawable.ic_baseline_expand_less_24px);
+        } else {
+            parentLayout.findViewById(R.id.additional_info).setVisibility(View.GONE);
+            ((ImageButton) v).setImageResource(R.drawable.ic_baseline_expand_more_24px);
+        }
+
+        //Log.e(LOGTAG, parentLayout.getId());
+    }
+
 }

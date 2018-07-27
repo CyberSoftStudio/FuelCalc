@@ -31,7 +31,7 @@
         <EditText
             android:id="@+id/base_vol"
             android:layout_width="0dp"
-            android:textColor="@color/OrangeRed"
+            android:textColor="#f0ff4500"
             android:text="1"
             android:gravity="right"
             android:textSize="23sp"
