@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/Coal"
+    android:background="@color/WhiteSmoke"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
     android:id="@+id/main_layout">
@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="1"
+        android:paddingBottom="5dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
@@ -23,13 +24,14 @@
             android:textSize="25sp"
             android:gravity="center_vertical"
             android:layout_weight="0.5"
-            android:textColor="@color/WhiteSmoke"
+            android:textColor="@color/Black"
+            
             />
 
         <EditText
             android:id="@+id/base_vol"
             android:layout_width="0dp"
-            android:textColor="@color/WhiteSmoke"
+            android:textColor="@color/OrangeRed"
             android:text="1"
             android:gravity="right"
             android:textSize="23sp"
@@ -41,21 +43,29 @@
             android:id="@+id/base_unit"
             android:layout_width="0dp"
             android:layout_weight="0.2"
-            android:gravity="center"
+
+            android:gravity="right"
             android:textSize="18sp"
-            android:layout_height="match_parent"
-            android:textColor="@color/WhiteSmoke"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Black"
             android:text="kg"
             />
 
     </LinearLayout>
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.7dp"
+        android:background="@color/Black"
+        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
+        android:paddingTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:padding="10dp"
+        android:layout_margin="0dp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
 

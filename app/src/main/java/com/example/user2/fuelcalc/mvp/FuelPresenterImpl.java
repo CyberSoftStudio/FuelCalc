@@ -1,16 +1,20 @@
 package com.example.user2.fuelcalc.mvp;
 
+import android.util.Log;
+
 import com.example.user2.fuelcalc.fuels.FuelType;
 
 import java.util.List;
 
 public class FuelPresenterImpl implements FuelPresenter {
 
+    private static final String LOGTAG = "FuelPresenter";
     private FuelView fuelView;
     private FuelModel fuelModel;
     private int baseFuelIndex = 0;
 
     public FuelPresenterImpl(FuelView v) {
+        Log.e(LOGTAG, "PresenterCreated");
         fuelView = v;
         fuelModel = new FuelModelImpl();
 
@@ -35,6 +39,7 @@ public class FuelPresenterImpl implements FuelPresenter {
 
     @Override
     public void onDestroy() {
+        Log.e(LOGTAG, "onDestroy");
         fuelModel.saveData();
         fuelModel = null;
         fuelView = null;

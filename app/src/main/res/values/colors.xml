@@ -30,7 +30,7 @@
     <color name="Coral">#FF7F50</color>
     <color name="HotPink">#FF69B4</color>
     <color name="Tomato">#FF6347</color>
-    <color name="OrangeRed">#FF4500</color>
+    <color name="OrangeRed">#e5ff4500</color>
     <color name="DeepPink">#FF1493</color>
     <color name="Fuchsia">#FF00FF</color>
     <color name="Magenta">#FF00FF</color>
@@ -146,7 +146,7 @@
     <color name="Black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="ivory">#FFFFF0</color>
-    <color name="DarkYellow">#606060</color>
+    <color name="DarkYellow">#90ff4500</color>
     <color name="lightyellow">#FFFFE0</color>
     <color name="yellow">#FFFF00</color>
     <color name="snow">#FFFAFA</color>
@@ -183,7 +183,7 @@
     <color name="salmon">#FA8072</color>
     <color name="ghostwhite">#F8F8FF</color>
     <color name="mintcream">#F5FFFA</color>
-    <color name="whitesmoke">#F5F5F5</color>
+    <color name="whitesmoke">#f7f5f5</color>
     <color name="beige">#F5F5DC</color>
     <color name="wheat">#F5DEB3</color>
     <color name="sandybrown">#F4A460</color>

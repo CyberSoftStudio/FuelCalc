@@ -5,36 +5,43 @@
     android:orientation="horizontal"
     android:padding="2dp"
     android:id="@+id/linear_layout"
+
     android:onClick="onClick">
 
     <TextView
         android:id="@+id/fuelName"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:gravity="left"
+        android:layout_weight="0.7"
+        android:paddingLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:text="Gasoline"
-        android:textColor="@color/WhiteSmoke"
+        android:textColor="@color/Black"
         android:textSize="20dp" />
 
     <TextView
         android:id="@+id/fuelVol"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.3"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.25"
         android:gravity="right"
         android:text="27.9"
-        android:textColor="@color/WhiteSmoke"
+        android:textColor="@color/Black"
         android:textSize="15dp" />
 
     <TextView
         android:id="@+id/unit_name"
+        android:layout_gravity="center_vertical"
         android:layout_width="0dp"
-        android:layout_weight="0.2"
-        android:layout_height="match_parent"
+        android:layout_weight="0.15"
+        android:layout_height="wrap_content"
         android:gravity="right"
         android:text="l"
-        android:textColor="@color/WhiteSmoke"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:textColor="@color/Black"
         android:textSize="15dp" />
 
 </LinearLayout>

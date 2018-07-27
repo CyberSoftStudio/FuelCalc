@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements FuelView {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Log.e(LOGTAG, "onCreate");
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -52,36 +53,51 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         recyclerView.setAdapter(recyclerAdapter);
 
 
-        fuelPresenter = new FuelPresenterImpl(this);
-
         EditText baseVolume = findViewById(R.id.base_vol);
         baseVolume.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.e(LOGTAG, "onTextChanged");
                 fuelPresenter.calcNewVolAndUpdateView();
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
+            public void afterTextChanged(Editable editable) {}
         });
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(LOGTAG, "onStart");
+        fuelPresenter = new FuelPresenterImpl(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(LOGTAG, "onStop");
+        fuelPresenter.onDestroy();
+        fuelPresenter = null;
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.e(LOGTAG, "onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.e(LOGTAG, "onOptionsItemSelected");
         switch (item.getTitle().toString()) {
-            case "item4":
+            case "Settings":
                 Intent myIntent = new Intent(MainActivity.this, SettingsActivity.class);
                 MainActivity.this.startActivity(myIntent);
                 break;
@@ -94,21 +110,9 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        fuelPresenter.onDestroy();
-    }
-
-
-    @Override
     public Double getBaseFuelVolume() {
         String volumeString = ((EditText) (findViewById(R.id.base_vol))).getText().toString();
-        if (volumeString.equals("")) {
+        if (volumeString.equals("") || volumeString.equals(".")) {
             return 0.0;
         } else {
             return Double.parseDouble(volumeString);

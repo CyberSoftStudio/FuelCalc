@@ -3,25 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/item1"
-        android:title="item1"
+        android:title="Help"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/item2"
         android:icon="@android:drawable/ic_menu_call"
-        android:title="item2"
+        android:title="About us"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/item3"
         android:icon="@android:drawable/ic_menu_info_details"
-        android:title="item3"
+        android:title="Donate"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/Settings"
-        android:icon="@drawable/ic_settings_button"
-        android:title="item4"
+        android:icon="@drawable/ic_settings_button_dark"
+        android:title="Settings"
         app:showAsAction="always">
     </item>
 </menu>

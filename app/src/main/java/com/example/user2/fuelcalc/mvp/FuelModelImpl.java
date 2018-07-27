@@ -14,12 +14,13 @@ import io.realm.RealmResults;
 
 public class FuelModelImpl implements FuelModel {
 
-    private static final String LOGTAG = "Model";
+    private static final String LOGTAG = "FuelModel";
 
     private ArrayList<FuelType> fuelTypes; // Array of fuelTypes.
     private Realm realm;
 
     public FuelModelImpl() {
+        Log.e(LOGTAG, "FuelModel Created");
         realm = Realm.getDefaultInstance();
 
         loadSavedData();

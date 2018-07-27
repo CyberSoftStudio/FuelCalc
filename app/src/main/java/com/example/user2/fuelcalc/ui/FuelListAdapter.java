@@ -52,7 +52,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                     .getApplicationContext().getResources().getColor(R.color.DarkYellow));
         } else {
             holder.row_linearlayout.setBackgroundColor(holder.row_linearlayout.getContext()
-                    .getApplicationContext().getResources().getColor(R.color.Coal));
+                    .getApplicationContext().getResources().getColor(R.color.WhiteSmoke));
         }
 
     }
