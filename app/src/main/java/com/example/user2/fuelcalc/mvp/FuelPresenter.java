@@ -13,4 +13,6 @@ public interface FuelPresenter {
     void processClick(String newBaseFuelName);
 
     void calcNewVolAndUpdateView();
+
+    void processExpandButtonClick(String fuelName, List<Boolean> oldExtended);
 }

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.user2.fuelcalc.fuels.FuelType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FuelPresenterImpl implements FuelPresenter {
@@ -59,5 +60,23 @@ public class FuelPresenterImpl implements FuelPresenter {
         }
 
         calcNewVolAndUpdateView(baseFuelIndex, fuelTypes);
+    }
+
+    @Override
+    public void processExpandButtonClick(String fuelName, List<Boolean> oldExtended) {
+
+        List<FuelType> fuelTypes = fuelModel.getFuelTypes();
+
+        int aimFuelIndex = 0;
+        for (int i = 0; i < fuelTypes.size(); ++i) {
+
+            if (fuelName.equals(fuelTypes.get(i).getName())) {
+                aimFuelIndex = i;
+            }
+        }
+
+        ArrayList<Boolean> newExtended = new ArrayList<>(oldExtended);
+        newExtended.set(aimFuelIndex, !oldExtended.get(aimFuelIndex));
+        fuelView.updateExpanded(newExtended);
     }
 }

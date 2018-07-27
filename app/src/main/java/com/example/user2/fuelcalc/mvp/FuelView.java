@@ -14,4 +14,6 @@ public interface FuelView {
 
     void onClick(View view);
 
+    void updateExpanded(List<Boolean> expanded);
+
 }

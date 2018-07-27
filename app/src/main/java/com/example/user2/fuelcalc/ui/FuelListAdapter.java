@@ -13,12 +13,14 @@ import android.widget.TextView;
 import com.example.user2.fuelcalc.R;
 import com.example.user2.fuelcalc.fuels.FuelType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelViewHolder> {
 
     private List<FuelType> items;
     private int basePosition = -1;
+    public List<Boolean> expanded;
 
     public void setBasePosition(int basePosition) {
         this.basePosition = basePosition;
@@ -27,6 +29,10 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
     public FuelListAdapter(List<FuelType> fitems) {
 
         this.items = fitems;
+        expanded = new ArrayList<>(fitems.size());
+        for (int i = 0; i < expanded.size(); ++i) {
+            expanded.set(i, false);
+        }
     }
 
     @NonNull

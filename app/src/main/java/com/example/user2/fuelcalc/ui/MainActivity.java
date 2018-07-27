@@ -146,16 +146,25 @@ public class MainActivity extends AppCompatActivity implements FuelView {
     public void onClickExpandButton(View v) {
         Log.e(LOGTAG, "onClickExpand");
         ViewGroup parentLayout = (ViewGroup) v.getParent().getParent();
-        View additionalInfo = parentLayout.findViewById(R.id.additional_info);
+        /*View additionalInfo = parentLayout.findViewById(R.id.additional_info);
         if (additionalInfo.getVisibility() == View.GONE) {
             parentLayout.findViewById(R.id.additional_info).setVisibility(View.VISIBLE);
             ((ImageButton) v).setImageResource(R.drawable.ic_baseline_expand_less_24px);
         } else {
             parentLayout.findViewById(R.id.additional_info).setVisibility(View.GONE);
             ((ImageButton) v).setImageResource(R.drawable.ic_baseline_expand_more_24px);
-        }
+        }*/
 
-        //Log.e(LOGTAG, parentLayout.getId());
+        TextView tv = parentLayout.findViewById(R.id.fuelName);
+        String fuelName = tv.getText().toString();
+        fuelPresenter.processExpandButtonClick(fuelName, recyclerAdapter.expanded);
     }
 
+
+    @Override
+    public void updateExpanded(List<Boolean> expanded) {
+        recyclerAdapter.expanded.clear();
+        recyclerAdapter.expanded.addAll(expanded);
+        //recyclerAdapter.update();
+    }
 }
