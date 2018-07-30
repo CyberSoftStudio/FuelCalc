@@ -26,7 +26,7 @@ public class FuelPresenterImpl implements FuelPresenter {
             newExtended.add(false);
         }
 
-        fuelView.updateExpanded(newExtended);
+        fuelView.updateExpanded(newExtended, -1);
 
     }
 
@@ -94,6 +94,6 @@ public class FuelPresenterImpl implements FuelPresenter {
 
         ArrayList<Boolean> newExtended = new ArrayList<>(oldExtended);
         newExtended.set(aimFuelIndex, !oldExtended.get(aimFuelIndex));
-        fuelView.updateExpanded(newExtended);
+        fuelView.updateExpanded(newExtended, aimFuelIndex);
     }
 }
