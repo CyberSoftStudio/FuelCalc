@@ -26,7 +26,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
     private int basePosition = -1;
     private List<Boolean> expanded;
     private int lastExpandedPosition = -1;
-    private static final int additionalInfoHeightDp = 80;
+    private static final int additionalInfoHeightDp = 85;
     private boolean playExpantionAnimation = false;
 
     public void setBasePosition(int basePosition) {

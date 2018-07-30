@@ -158,4 +158,13 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         recyclerAdapter.updateExpanded(newExpanded);
         recyclerAdapter.setLastExpandedPosition(lastExpandedPosition);
     }
+
+    public void onClickDeleteBtn(View v) {
+        Log.e(LOGTAG, "onClickDelete");
+        ViewGroup parentLayout = (ViewGroup) v.getParent().getParent();
+
+        TextView tv = parentLayout.findViewById(R.id.fuelName);
+        String fuelName = tv.getText().toString();
+        fuelPresenter.processDeleteButnClick(fuelName, recyclerAdapter.getExpanded());
+    }
 }

@@ -13,4 +13,6 @@ public interface FuelModel {
     void calculateNewVolumes(int baseFuelIndex, double baseFuelVolume);
 
     List<FuelType> getFuelTypes ();
+
+    void deleteFuel(int position);
 }

@@ -70,7 +70,7 @@
         android:id="@+id/additional_info"
         android:paddingLeft="26dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="85dp">
 
         <TextView
             android:id="@+id/caloricity"
@@ -93,6 +93,14 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_gravity="center"/>
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Delete fuel"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:onClick="onClickDeleteBtn"/>
     </LinearLayout>
 
 </LinearLayout>

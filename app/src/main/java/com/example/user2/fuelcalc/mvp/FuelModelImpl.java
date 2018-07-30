@@ -94,4 +94,9 @@ public class FuelModelImpl implements FuelModel {
         return fuelTypes;
     }
 
+
+    @Override
+    public void deleteFuel(int position) {
+        fuelTypes.remove(position);
+    }
 }

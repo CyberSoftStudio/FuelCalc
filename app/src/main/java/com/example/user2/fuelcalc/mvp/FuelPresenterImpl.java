@@ -96,4 +96,22 @@ public class FuelPresenterImpl implements FuelPresenter {
         newExtended.set(aimFuelIndex, !oldExtended.get(aimFuelIndex));
         fuelView.updateExpanded(newExtended, aimFuelIndex);
     }
+
+    @Override
+    public void processDeleteButnClick(String fuelName,  List<Boolean> extended) {
+
+        List<FuelType> fuelTypes = fuelModel.getFuelTypes();
+
+        int aimFuelIndex = 0;
+        for (int i = 0; i < fuelTypes.size(); ++i) {
+
+            if (fuelName.equals(fuelTypes.get(i).getName())) {
+                aimFuelIndex = i;
+            }
+        }
+
+        fuelModel.deleteFuel(aimFuelIndex);
+        extended.remove(aimFuelIndex);
+        fuelView.updateExpanded(extended, -1);
+    }
 }
