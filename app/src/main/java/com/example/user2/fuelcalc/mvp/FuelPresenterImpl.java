@@ -20,6 +20,14 @@ public class FuelPresenterImpl implements FuelPresenter {
         fuelModel = new FuelModelImpl();
 
         calcNewVolAndUpdateView(baseFuelIndex, fuelModel.getFuelTypes());
+
+        ArrayList<Boolean> newExtended = new ArrayList<>(fuelModel.getFuelTypes().size());
+        for (int i = 0; i < fuelModel.getFuelTypes().size(); ++i) {
+            newExtended.add(false);
+        }
+
+        fuelView.updateExpanded(newExtended);
+
     }
 
 
@@ -29,6 +37,7 @@ public class FuelPresenterImpl implements FuelPresenter {
 
         fuelView.update(fuelTypes, baseFuelIndex, fuelTypes.get(baseFuelIndex).getName(),
                 fuelTypes.get(baseFuelIndex).getUnitName());
+
     }
 
 
@@ -66,6 +75,14 @@ public class FuelPresenterImpl implements FuelPresenter {
     public void processExpandButtonClick(String fuelName, List<Boolean> oldExtended) {
 
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
+
+        if (oldExtended.size() != fuelTypes.size()) {
+
+            oldExtended = new ArrayList<Boolean>(fuelTypes.size());
+            for (int i = 0; i < fuelTypes.size(); ++i) {
+                oldExtended.add(false);
+            }
+        }
 
         int aimFuelIndex = 0;
         for (int i = 0; i < fuelTypes.size(); ++i) {

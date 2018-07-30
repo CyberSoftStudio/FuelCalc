@@ -54,6 +54,7 @@
             android:textSize="15dp" />
 
         <ImageButton
+            android:id="@+id/arrow"
             android:layout_width="wrap_content"
             android:onClick="onClickExpandButton"
             android:layout_height="wrap_content"

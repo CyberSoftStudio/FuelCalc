@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,11 +19,13 @@ import com.example.user2.fuelcalc.fuels.FuelType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
+
 public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelViewHolder> {
 
     private List<FuelType> items;
     private int basePosition = -1;
-    public List<Boolean> expanded;
+    private List<Boolean> expanded;
 
     public void setBasePosition(int basePosition) {
         this.basePosition = basePosition;
@@ -60,9 +65,21 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         if (basePosition == position) {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.DarkYellow));
-        } else {
+        }
+        else {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.WhiteSmoke));
+        }
+
+
+        ImageButton imageButton = holder.rowLinearLayout.findViewById(R.id.arrow);
+        if (expanded.get(position).equals(false)) {
+            holder.additionalInfoLauout.setVisibility(View.GONE);
+            imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px);
+        }
+        else {
+            holder.additionalInfoLauout.setVisibility(View.VISIBLE);
+            imageButton.setImageResource(R.drawable.ic_baseline_expand_less_24px);
         }
 
     }
@@ -79,6 +96,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         public TextView fuelVolTextView;
         public TextView fuelUnitTextView;
         LinearLayout rowLinearLayout;
+        LinearLayout additionalInfoLauout;
 
 
         public FuelViewHolder(View itemView) {
@@ -87,7 +105,18 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             fuelNameTextView = itemView.findViewById(R.id.fuelName);
             fuelVolTextView = itemView.findViewById(R.id.fuelVol);
             fuelUnitTextView = itemView.findViewById(R.id.unit_name);
+            additionalInfoLauout = itemView.findViewById(R.id.additional_info);
         }
+    }
+
+    public List<Boolean> getExpanded() {
+        return  expanded;
+    }
+
+    public void updateExpanded(List<Boolean> newExpanded) {
+        expanded.clear();
+        expanded.addAll(newExpanded);
+        notifyDataSetChanged();
     }
 
 }
