@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -135,6 +136,14 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         recyclerAdapter.update(fuelTypes);
     }
 
+
+    @Override
+    public void showToast(String message) {
+        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
     @Override
     public void onClick(View view) {
         TextView curFuelNameTextView = view.findViewById(R.id.fuelName);
@@ -158,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         recyclerAdapter.updateExpanded(newExpanded);
         recyclerAdapter.setLastExpandedPosition(lastExpandedPosition);
     }
+
 
     public void onClickDeleteBtn(View v) {
         Log.e(LOGTAG, "onClickDelete");

@@ -91,7 +91,7 @@ public class FuelModelImpl implements FuelModel {
 
     @Override
     public List<FuelType> getFuelTypes() {
-        return fuelTypes;
+        return new ArrayList<>(fuelTypes);
     }
 
 

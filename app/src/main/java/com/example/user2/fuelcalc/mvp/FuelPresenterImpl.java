@@ -102,6 +102,12 @@ public class FuelPresenterImpl implements FuelPresenter {
 
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
 
+        if(fuelTypes.size() == 1) {
+            fuelView.showToast("You can't delete last fuel");
+
+            return;
+        }
+
         int aimFuelIndex = 0;
         for (int i = 0; i < fuelTypes.size(); ++i) {
 
@@ -110,8 +116,14 @@ public class FuelPresenterImpl implements FuelPresenter {
             }
         }
 
+        fuelTypes.remove(aimFuelIndex);
+
+        ArrayList<Boolean> newExtended = new ArrayList<>(extended);
+        newExtended.remove(aimFuelIndex);
+
         fuelModel.deleteFuel(aimFuelIndex);
-        extended.remove(aimFuelIndex);
-        fuelView.updateExpanded(extended, -1);
+        fuelView.updateExpanded(newExtended, -1);
+
+        calcNewVolAndUpdateView(0, fuelTypes);
     }
 }
