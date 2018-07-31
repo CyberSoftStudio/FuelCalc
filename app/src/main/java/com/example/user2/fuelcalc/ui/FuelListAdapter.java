@@ -63,6 +63,8 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         holder.fuelNameTextView.setText(items.get(position).getName());
         holder.fuelVolTextView.setText(items.get(position).getResVolume().toString());
         holder.fuelUnitTextView.setText(items.get(position).getUnitName());
+        holder.caloricityTextView.setText("Caloricity: " + items.get(position).getBaseCaloricity());
+        holder.priceTextView.setText("Price: " + items.get(position).getPricePerBW());
 
         if (basePosition == position) {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
@@ -119,15 +121,35 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
 
     @Override
     public int getItemCount() {
-
         return items.size();
     }
+
+
+    public List<Boolean> getExpanded() {
+        return new ArrayList<>(expanded);
+    }
+
+
+    public void updateExpanded(List<Boolean> newExpanded) {
+        expanded.clear();
+        expanded.addAll(newExpanded);
+        playExpantionAnimation = true;
+        notifyDataSetChanged();
+    }
+
+
+    public void setLastExpandedPosition(int lastExpandedPosition) {
+        this.lastExpandedPosition = lastExpandedPosition;
+    }
+
 
     public static class FuelViewHolder extends RecyclerView.ViewHolder {
 
         public TextView fuelNameTextView;
         public TextView fuelVolTextView;
         public TextView fuelUnitTextView;
+        public TextView caloricityTextView;
+        public TextView priceTextView;
         LinearLayout rowLinearLayout;
         LinearLayout additionalInfoLauout;
 
@@ -139,22 +161,10 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             fuelVolTextView = itemView.findViewById(R.id.fuelVol);
             fuelUnitTextView = itemView.findViewById(R.id.unit_name);
             additionalInfoLauout = itemView.findViewById(R.id.additional_info);
+            caloricityTextView = itemView.findViewById(R.id.caloricity);
+            priceTextView = itemView.findViewById(R.id.price);
         }
     }
 
-    public List<Boolean> getExpanded() {
-        return expanded;
-    }
-
-    public void updateExpanded(List<Boolean> newExpanded) {
-        expanded.clear();
-        expanded.addAll(newExpanded);
-        playExpantionAnimation = true;
-        notifyDataSetChanged();
-    }
-
-    public void setLastExpandedPosition(int lastExpandedPosition) {
-        this.lastExpandedPosition = lastExpandedPosition;
-    }
 
 }

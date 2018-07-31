@@ -118,11 +118,10 @@ public class FuelPresenterImpl implements FuelPresenter {
 
         fuelTypes.remove(aimFuelIndex);
 
-        ArrayList<Boolean> newExtended = new ArrayList<>(extended);
-        newExtended.remove(aimFuelIndex);
+        extended.remove(aimFuelIndex);
 
         fuelModel.deleteFuel(aimFuelIndex);
-        fuelView.updateExpanded(newExtended, -1);
+        fuelView.updateExpanded(extended, -1);
 
         calcNewVolAndUpdateView(0, fuelTypes);
     }
