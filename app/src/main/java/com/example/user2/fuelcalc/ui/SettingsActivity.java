@@ -129,4 +129,8 @@ public class SettingsActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.caloricity_inp_field)).setText("");
         ((EditText) findViewById(R.id.price_inp_field)).setText("");
     }
+
+    void doSomething() {
+        int n = 42;
+    }
 }
