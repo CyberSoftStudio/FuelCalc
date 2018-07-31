@@ -2,28 +2,31 @@ package com.example.user2.fuelcalc.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.inputmethodservice.Keyboard;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user2.fuelcalc.R;
 import com.example.user2.fuelcalc.fuels.FuelType;
-import com.example.user2.fuelcalc.fuels.RealmFuelType;
 import com.example.user2.fuelcalc.mvp.FuelPresenter;
 import com.example.user2.fuelcalc.mvp.FuelPresenterImpl;
 import com.example.user2.fuelcalc.mvp.FuelView;
@@ -31,19 +34,15 @@ import com.example.user2.fuelcalc.mvp.FuelView;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
-
-public class MainActivity extends AppCompatActivity implements FuelView {
+public class MainActivity extends AppCompatActivity implements FuelView  {
 
     private static final String LOGTAG = "MainActivity";
 
     RecyclerView recyclerView;
     FuelListAdapter recyclerAdapter;
     FuelPresenter fuelPresenter;
-    boolean darkThemeOn = false;
+    public boolean darkThemeOn = false;
     SharedPreferences prefs;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -55,12 +54,14 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         darkThemeOn = prefs.getBoolean("night_mode", false);
         if (darkThemeOn){
             setTheme(R.style.DarkTheme);
-
         } else {
             setTheme(R.style.LightTheme);
         }
 
         setContentView(R.layout.activity_main);
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(this);
 
@@ -85,9 +86,11 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
             }
         });
     }
+
 
 
     @Override

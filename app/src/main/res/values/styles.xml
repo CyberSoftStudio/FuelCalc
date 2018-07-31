@@ -26,9 +26,8 @@
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="android:colorBackground">#4b4b4b</item>
-        <item name="colorPrimary">#4b4b4b</item>
+        <item name="android:colorBackground">#000000</item>
+        <item name="colorPrimary">#000000</item>
         <item name="android:actionMenuTextColor">@color/Black</item>
-        <item name="android:textColor">@color/WhiteSmoke</item>
     </style>
 </resources>

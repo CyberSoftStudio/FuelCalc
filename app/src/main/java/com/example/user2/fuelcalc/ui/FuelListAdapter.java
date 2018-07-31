@@ -2,6 +2,8 @@ package com.example.user2.fuelcalc.ui;
 
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -20,6 +22,8 @@ import com.example.user2.fuelcalc.fuels.FuelType;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
 
 public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelViewHolder> {
 
@@ -88,24 +92,31 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             case "Coal":
                 holder.fuelIcon.setImageResource(R.drawable.coal);
                 break;
+            case "Pellets":
+                holder.fuelIcon.setImageResource(R.drawable.pellets);
+                break;
+            case "LPG":
+                holder.fuelIcon.setImageResource(R.drawable.lpg);
+                break;
             default:
                 holder.fuelIcon.setImageResource(R.drawable.gaz);
                 break;
         }
-
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
         if (basePosition == position) {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.DarkYellow));
         } else {
-            if (darkModeOn) {
+            if (prefs.getBoolean("night_mode", false)) {
                 holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
-                        .getApplicationContext().getResources().getColor(R.color.Coal));
+                        .getApplicationContext().getResources().getColor(R.color.Black));
+                ((TextView)holder.rowLinearLayout.findViewById(R.id.fuelName)).setTextColor(R.color.White);
             } else {
                 holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                         .getApplicationContext().getResources().getColor(R.color.WhiteSmoke));
             }
         }
-
 
         ImageButton imageButton = holder.rowLinearLayout.findViewById(R.id.arrow);
 

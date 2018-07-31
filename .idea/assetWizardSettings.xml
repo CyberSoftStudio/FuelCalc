@@ -16,27 +16,10 @@
                             <entry key="actionbar">
                               <value>
                                 <PersistentState>
-                                  <option name="children">
-                                    <map>
-                                      <entry key="image">
-                                        <value>
-                                          <PersistentState>
-                                            <option name="values">
-                                              <map>
-                                                <entry key="paddingPercent" value="10" />
-                                                <entry key="trimmed" value="true" />
-                                              </map>
-                                            </option>
-                                          </PersistentState>
-                                        </value>
-                                      </entry>
-                                    </map>
-                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$PROJECT_DIR$/app/src/main/res/gaz1.png" />
-                                      <entry key="outputName" value="ic_NPG" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/baseline-settings-20px.svg" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -68,8 +51,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_baseline_expand_more_24px_light" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/app/src/main/res/baseline-expand_more-24px.svg" />
+                            <entry key="outputName" value="ic_baseline_expand_less_24px" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/baseline-expand_less-24px.svg" />
                           </map>
                         </option>
                       </PersistentState>
