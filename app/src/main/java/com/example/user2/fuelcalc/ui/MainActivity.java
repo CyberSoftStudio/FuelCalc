@@ -177,4 +177,5 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         String fuelName = tv.getText().toString();
         fuelPresenter.processDeleteButnClick(fuelName, recyclerAdapter.getExpanded());
     }
+
 }
