@@ -29,6 +29,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
     private int lastExpandedPosition = -1;
     private static final int additionalInfoHeightDp = 85;
     private boolean playExpantionAnimation = false;
+    boolean darkModeOn = false;
 
     public void setBasePosition(int basePosition) {
         this.basePosition = basePosition;
@@ -58,8 +59,8 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         notifyDataSetChanged();
     }
 
-    public boolean isNightMode(boolean isOn){
-        return isOn;
+    public void isNightMode(boolean isOn) {
+        darkModeOn = isOn;
     }
 
     @SuppressLint("ResourceAsColor")
@@ -84,6 +85,9 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             case "CNG":
                 holder.fuelIcon.setImageResource(R.drawable.cng);
                 break;
+            case "Coal":
+                holder.fuelIcon.setImageResource(R.drawable.coal);
+                break;
             default:
                 holder.fuelIcon.setImageResource(R.drawable.gaz);
                 break;
@@ -93,8 +97,13 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.DarkYellow));
         } else {
-            holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
-                    .getApplicationContext().getResources().getColor(R.color.WhiteSmoke));
+            if (darkModeOn) {
+                holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
+                        .getApplicationContext().getResources().getColor(R.color.Coal));
+            } else {
+                holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
+                        .getApplicationContext().getResources().getColor(R.color.WhiteSmoke));
+            }
         }
 
 

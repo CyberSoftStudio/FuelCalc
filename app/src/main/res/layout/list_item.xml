@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linear_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/linear_layout"
 
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
 
@@ -16,14 +16,12 @@
         android:orientation="horizontal"
 
         android:padding="2dp">
-
         <ImageView
             android:id="@+id/fuelLogo"
             android:layout_width="40dp"
+            android:paddingLeft="10dp"
             android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="10dp" />
-
+            android:layout_gravity="center_vertical"/>
         <TextView
             android:id="@+id/fuelName"
             android:layout_width="0dp"
@@ -63,56 +61,51 @@
         <ImageButton
             android:id="@+id/arrow"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/invisible"
             android:onClick="onClickExpandButton"
-            android:src="@drawable/ic_baseline_expand_more_24px" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_expand_more_24px"
+            android:background="@color/invisible"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/additional_info"
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:visibility="gone"
         android:orientation="vertical"
-        android:paddingStart="26dp"
-        android:paddingEnd="26dp"
-        android:visibility="gone">
+        android:id="@+id/additional_info"
+        android:paddingLeft="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="85dp">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/caloricity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:textSize="18sp"
+            android:textColor="@color/Black"
+            android:text="Caloricity:   "
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/price"
+            android:textColor="@color/Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Price:    "
+            android:layout_gravity="center"/>
 
-            <TextView
-                android:id="@+id/caloricity"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                tools:text="Caloricity:   "
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                tools:text="Price:    "
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-        </LinearLayout>
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"/>
 
         <Button
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="onClickDeleteBtn"
+            android:layout_width="match_parent"
             android:text="Delete fuel"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:onClick="onClickDeleteBtn"/>
     </LinearLayout>
 
 </LinearLayout>
