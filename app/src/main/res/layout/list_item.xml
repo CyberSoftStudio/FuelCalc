@@ -16,7 +16,12 @@
         android:orientation="horizontal"
 
         android:padding="2dp">
-
+        <ImageView
+            android:id="@+id/fuelLogo"
+            android:layout_width="40dp"
+            android:paddingLeft="10dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"/>
         <TextView
             android:id="@+id/fuelName"
             android:layout_width="0dp"

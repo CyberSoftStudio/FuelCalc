@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,6 +58,10 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         notifyDataSetChanged();
     }
 
+    public boolean isNightMode(boolean isOn){
+        return isOn;
+    }
+
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final FuelViewHolder holder, final int position) {
@@ -65,6 +70,24 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         holder.fuelUnitTextView.setText(items.get(position).getUnitName());
         holder.caloricityTextView.setText("Caloricity: " + items.get(position).getBaseCaloricity());
         holder.priceTextView.setText("Price: " + items.get(position).getPricePerBW());
+
+        switch (holder.fuelNameTextView.getText().toString()) {
+            case "Diesel":
+                holder.fuelIcon.setImageResource(R.drawable.diesel);
+                break;
+            case "Wood":
+                holder.fuelIcon.setImageResource(R.drawable.wood);
+                break;
+            case "Electricity":
+                holder.fuelIcon.setImageResource(R.drawable.electricity);
+                break;
+            case "CNG":
+                holder.fuelIcon.setImageResource(R.drawable.cng);
+                break;
+            default:
+                holder.fuelIcon.setImageResource(R.drawable.gaz);
+                break;
+        }
 
         if (basePosition == position) {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
@@ -86,7 +109,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px);
             holder.additionalInfoLauout.setVisibility(View.GONE);
 
-            if(position == lastExpandedPosition && playExpantionAnimation) {
+            if (position == lastExpandedPosition && playExpantionAnimation) {
                 Animation animation = new SlideAnimationDown(holder.additionalInfoLauout,
                         px, 0);
                 holder.additionalInfoLauout.getLayoutParams().height = px;
@@ -103,7 +126,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             imageButton.setImageResource(R.drawable.ic_baseline_expand_less_24px);
             holder.additionalInfoLauout.setVisibility(View.VISIBLE);
 
-            if(position == lastExpandedPosition && playExpantionAnimation) {
+            if (position == lastExpandedPosition && playExpantionAnimation) {
                 Animation animation = new SlideAnimationDown(holder.additionalInfoLauout,
                         0, px);
                 holder.additionalInfoLauout.getLayoutParams().height = 0;
@@ -146,6 +169,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
     public static class FuelViewHolder extends RecyclerView.ViewHolder {
 
         public TextView fuelNameTextView;
+        public ImageView fuelIcon;
         public TextView fuelVolTextView;
         public TextView fuelUnitTextView;
         public TextView caloricityTextView;
@@ -158,6 +182,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             super(itemView);
             rowLinearLayout = itemView.findViewById(R.id.linear_layout);
             fuelNameTextView = itemView.findViewById(R.id.fuelName);
+            fuelIcon = itemView.findViewById(R.id.fuelLogo);
             fuelVolTextView = itemView.findViewById(R.id.fuelVol);
             fuelUnitTextView = itemView.findViewById(R.id.unit_name);
             additionalInfoLauout = itemView.findViewById(R.id.additional_info);

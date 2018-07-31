@@ -37,7 +37,7 @@ public class FuelModelImpl implements FuelModel {
 
         if (fuelTypes.size() == 0) {
             Log.e(LOGTAG, "Filling with default fuel types");
-            fuelTypes.add(new FuelType("NPG", -1, "m\u00B3", 1, 0.25, 1,
+            fuelTypes.add(new FuelType("CNG", -1, "m\u00B3", 1, 0.25, 1,
                     7600));
             fuelTypes.add(new FuelType("Diesel", -1, "l", 1, 1.00, 1,
                     10300));

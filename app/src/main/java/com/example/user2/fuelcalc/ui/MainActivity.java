@@ -1,6 +1,8 @@
 package com.example.user2.fuelcalc.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,15 +41,26 @@ public class MainActivity extends AppCompatActivity implements FuelView {
     RecyclerView recyclerView;
     FuelListAdapter recyclerAdapter;
     FuelPresenter fuelPresenter;
-
+    boolean darkThemeOn = false;
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         Log.e(LOGTAG, "onCreate");
-        setContentView(R.layout.activity_main);
 
+        prefs = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+        darkThemeOn = prefs.getBoolean("night_mode", false);
+        if (darkThemeOn){
+            setTheme(R.style.DarkTheme);
+
+        } else {
+            setTheme(R.style.LightTheme);
+        }
+
+        setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(this);
 
@@ -81,6 +94,14 @@ public class MainActivity extends AppCompatActivity implements FuelView {
     protected void onStart() {
         super.onStart();
         Log.e(LOGTAG, "onStart");
+        prefs = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+        boolean settingsNewTheme = prefs.getBoolean("night_mode", false);
+        if (darkThemeOn != settingsNewTheme){
+            this.recreate();
+            recyclerAdapter.isNightMode(darkThemeOn);
+        }
+
         fuelPresenter = new FuelPresenterImpl(this);
     }
 
