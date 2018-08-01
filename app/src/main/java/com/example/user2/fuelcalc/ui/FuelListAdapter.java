@@ -108,6 +108,10 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                     .getApplicationContext().getResources().getColor(R.color.White));
             holder.fuelUnitTextView.setTextColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.White));
+            holder.caloricityTextView.setTextColor(holder.rowLinearLayout.getContext()
+                    .getApplicationContext().getResources().getColor(R.color.White));
+            holder.priceTextView.setTextColor(holder.rowLinearLayout.getContext()
+                    .getApplicationContext().getResources().getColor(R.color.White));
         } else {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.White));
