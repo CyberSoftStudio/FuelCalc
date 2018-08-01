@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -31,6 +33,7 @@ import io.realm.RealmResults;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private static final String LOGTAG = "SettingsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getTitle().toString()) {
             case "Back":
-                Intent myIntent = new Intent(SettingsActivity.this, MainActivity.class);
-                SettingsActivity.this.startActivity(myIntent);
+                onBackPressed();
                 break;
             default:
                 break;
@@ -142,5 +144,12 @@ public class SettingsActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.unit_name_inp_field)).setText("");
         ((EditText) findViewById(R.id.caloricity_inp_field)).setText("");
         ((EditText) findViewById(R.id.price_inp_field)).setText("");
+
+        try {
+            InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (NullPointerException e) {
+            Log.e(LOGTAG, e.toString());
+        }
     }
 }
