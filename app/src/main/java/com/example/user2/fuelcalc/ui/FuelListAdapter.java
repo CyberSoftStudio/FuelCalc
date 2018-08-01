@@ -99,19 +99,22 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         }
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
+        if (prefs.getBoolean("night_mode", false)) {
+            holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
+                    .getApplicationContext().getResources().getColor(R.color.Coal));
+            holder.fuelNameTextView.setTextColor(holder.rowLinearLayout.getContext()
+                    .getApplicationContext().getResources().getColor(R.color.White));
+            holder.fuelVolTextView.setTextColor(holder.rowLinearLayout.getContext()
+                    .getApplicationContext().getResources().getColor(R.color.White));
+            holder.fuelUnitTextView.setTextColor(holder.rowLinearLayout.getContext()
+                    .getApplicationContext().getResources().getColor(R.color.White));
+        } else {
+            holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
+                    .getApplicationContext().getResources().getColor(R.color.White));
+        }
         if (basePosition == position) {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.DarkYellow));
-        } else {
-            if (prefs.getBoolean("night_mode", false)) {
-                holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
-                        .getApplicationContext().getResources().getColor(R.color.Coal));
-                holder.fuelNameTextView.setTextColor(holder.rowLinearLayout.getContext()
-                        .getApplicationContext().getResources().getColor(R.color.White));
-            } else {
-                holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
-                        .getApplicationContext().getResources().getColor(R.color.White));
-            }
         }
 
         ImageButton imageButton = holder.rowLinearLayout.findViewById(R.id.arrow);
@@ -121,8 +124,11 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
 
 
         if (expanded.get(position).equals(false)) {
-
-            imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px);
+            if (!prefs.getBoolean("night_mode", false)) {
+                imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px);
+            } else {
+                imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px_light);
+            }
             holder.additionalInfoLauout.setVisibility(View.GONE);
 
             if (position == lastExpandedPosition && playExpantionAnimation) {
@@ -139,7 +145,11 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             }
         } else {
 
-            imageButton.setImageResource(R.drawable.ic_baseline_expand_less_24px);
+            if (!prefs.getBoolean("night_mode", false)) {
+                imageButton.setImageResource(R.drawable.ic_baseline_expand_less_24px);
+            } else {
+                imageButton.setImageResource(R.drawable.ic_baseline_expand_less_24px_light);
+            }
             holder.additionalInfoLauout.setVisibility(View.VISIBLE);
 
             if (position == lastExpandedPosition && playExpantionAnimation) {

@@ -2,7 +2,6 @@ package com.example.user2.fuelcalc.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,15 +11,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +28,7 @@ import com.example.user2.fuelcalc.mvp.FuelView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements FuelView  {
+public class MainActivity extends AppCompatActivity implements FuelView {
 
     private static final String LOGTAG = "MainActivity";
 
@@ -43,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
     FuelPresenter fuelPresenter;
     private boolean darkThemeOn = false;
     SharedPreferences prefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,15 +47,18 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
         prefs = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
         darkThemeOn = prefs.getBoolean("night_mode", false);
-        if (darkThemeOn){
+        if (darkThemeOn) {
             setTheme(R.style.DarkTheme);
         } else {
             setTheme(R.style.LightTheme);
         }
         setContentView(R.layout.activity_main);
-        if(darkThemeOn){
+        if (darkThemeOn) {
             findViewById(R.id.main_layout).setBackgroundColor(getResources().getColor(R.color.Coal));
-        } else{
+            findViewById(R.id.base_fuel_layout).setBackgroundColor(getResources().getColor(R.color.LightCoal));
+            ((TextView) findViewById(R.id.base_fuel)).setTextColor(getResources().getColor(R.color.White));
+            ((TextView) findViewById(R.id.base_unit)).setTextColor(getResources().getColor(R.color.White));
+        } else {
             findViewById(R.id.main_layout).setBackgroundColor(getResources().getColor(R.color.White));
         }
 
@@ -94,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
     }
 
 
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
 
         boolean settingsNewTheme = prefs.getBoolean("night_mode", false);
 
-        if (darkThemeOn != settingsNewTheme){
+        if (darkThemeOn != settingsNewTheme) {
             this.recreate();
         }
 
@@ -124,7 +121,11 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.e(LOGTAG, "onCreateOptionsMenu");
-        getMenuInflater().inflate(R.menu.main, menu);
+        if (darkThemeOn) {
+            getMenuInflater().inflate(R.menu.main_dark, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.main_light, menu);
+        }
         return true;
     }
 
@@ -183,7 +184,6 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
     public void onClickExpandButton(View v) {
         Log.e(LOGTAG, "onClickExpand");
         ViewGroup parentLayout = (ViewGroup) v.getParent().getParent();
-
         TextView tv = parentLayout.findViewById(R.id.fuelName);
         String fuelName = tv.getText().toString();
         fuelPresenter.processExpandButtonClick(fuelName, recyclerAdapter.getExpanded());

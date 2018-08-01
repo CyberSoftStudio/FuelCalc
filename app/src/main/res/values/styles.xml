@@ -32,7 +32,7 @@
         <item name="android:colorBackground">#000000</item>
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#797979</item>
-        <item name="colorAccent">#0033ff</item>
+        <item name="colorAccent">#ff7e3d</item>
         <item name="android:actionMenuTextColor">@color/Black</item>
     </style>
 </resources>

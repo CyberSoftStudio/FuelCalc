@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFF</color>
-    <color name="Coal">#4b4b4b</color>
+    <color name="Coal">#2b2a2a</color>
     <color name="colorPrimaryDark">#111</color>
     <color name="colorAccent">#FF4081</color>
     <color name="White">#FFFFFF</color>
@@ -108,6 +108,7 @@
     <color name="LightSlateGray">#778899</color>
     <color name="SlateGray">#708090</color>
     <color name="OliveDrab">#6B8E23</color>
+    <color name="LightCoal">#414141</color>
     <color name="SlateBlue">#6A5ACD</color>
     <color name="DimGray">#696969</color>
     <color name="MediumAquamarine">#66CDAA</color>

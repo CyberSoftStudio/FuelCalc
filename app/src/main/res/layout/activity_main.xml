@@ -11,6 +11,7 @@
     <LinearLayout
         android:paddingStart="7dp"
         android:paddingEnd="7dp"
+        android:id="@+id/base_fuel_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="1"
