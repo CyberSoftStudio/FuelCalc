@@ -29,6 +29,7 @@ import com.example.user2.fuelcalc.mvp.FuelModel;
 import com.example.user2.fuelcalc.mvp.FuelModelImpl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -100,6 +101,16 @@ public class SettingsActivity extends AppCompatActivity {
             showToast("All input fields must not be empty");
             return;
         }
+
+
+        List<FuelType> fuelTypes = fuelModel.getFuelTypes();
+        for (FuelType curFuelType : fuelTypes) {
+            if (curFuelType.getName().equals(fuelName)) {
+                showToast("Fuel with this name already exists\nChoose other fuel name");
+                return;
+            }
+        }
+
 
         double priceDouble, caloricityDouble;
 
