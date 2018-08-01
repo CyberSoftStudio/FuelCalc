@@ -105,11 +105,12 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         } else {
             if (prefs.getBoolean("night_mode", false)) {
                 holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
-                        .getApplicationContext().getResources().getColor(R.color.Black));
-                ((TextView)holder.rowLinearLayout.findViewById(R.id.fuelName)).setTextColor(R.color.White);
+                        .getApplicationContext().getResources().getColor(R.color.Coal));
+                holder.fuelNameTextView.setTextColor(holder.rowLinearLayout.getContext()
+                        .getApplicationContext().getResources().getColor(R.color.White));
             } else {
                 holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
-                        .getApplicationContext().getResources().getColor(R.color.WhiteSmoke));
+                        .getApplicationContext().getResources().getColor(R.color.White));
             }
         }
 

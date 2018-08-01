@@ -57,8 +57,12 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
         } else {
             setTheme(R.style.LightTheme);
         }
-
         setContentView(R.layout.activity_main);
+        if(darkThemeOn){
+            findViewById(R.id.main_layout).setBackgroundColor(getResources().getColor(R.color.Coal));
+        } else{
+            findViewById(R.id.main_layout).setBackgroundColor(getResources().getColor(R.color.White));
+        }
 
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(this);
