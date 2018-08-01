@@ -24,16 +24,19 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/cute_btn_style"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/nmText"
                 android:layout_height="wrap_content"
                 android:textColor="@color/Black"
-                android:paddingLeft="10dp"
-                android:text="Night Mode"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="NIGHT MODE"
                 android:layout_weight="0.8"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
                 />
@@ -52,26 +55,31 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:onClick="onClickResetDefaultBtn"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:background="@drawable/cute_btn_style"
             android:textSize="18sp"
             android:text="@string/reset_fuel_list_to_default"
-            android:paddingEnd="40dp"
-            android:layout_marginTop="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginTop="20dp"
             android:paddingStart="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
             />
 
         <Button
             android:id="@+id/add_fuel_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:onClick="onClickAddBtn"
             android:text="Add fuel"
+            android:textSize="18sp"
             android:background="@drawable/cute_btn_style"
-            android:paddingEnd="40dp"
-            android:paddingStart="40dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -179,12 +187,11 @@
 
         <LinearLayout
             android:layout_marginTop="20dp"
-            android:padding="10dp"
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_gravity="bottom"
-            android:gravity="bottom">
+            android:gravity="center">
 
             <Button
                 android:layout_width="0dp"
