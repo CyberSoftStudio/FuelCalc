@@ -75,7 +75,12 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings_menu, menu);
+
+        if (sharedPreferences.getBoolean("night_mode", false)) {
+            getMenuInflater().inflate(R.menu.settings_menu_dark, menu);
+        }else {
+            getMenuInflater().inflate(R.menu.settings_menu, menu);
+        }
         return true;
     }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item1"
+        android:title="@string/back"
+        android:icon="@drawable/ic_baseline_arrow_back_light"
+        app:showAsAction="always"
+        >
+    </item>
+</menu>
