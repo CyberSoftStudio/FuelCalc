@@ -62,7 +62,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         notifyDataSetChanged();
     }
 
-    @SuppressLint("ResourceAsColor")////////////////////////////////////////////////////////////////
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final FuelViewHolder holder, final int position) {
         holder.fuelNameTextView.setText(items.get(position).getName());
