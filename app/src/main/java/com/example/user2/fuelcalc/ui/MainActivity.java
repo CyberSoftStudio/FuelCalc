@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
     RecyclerView recyclerView;
     FuelListAdapter recyclerAdapter;
     FuelPresenter fuelPresenter;
-    public boolean darkThemeOn = false;
+    private boolean darkThemeOn = false;
     SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +59,7 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
         }
 
         setContentView(R.layout.activity_main);
-        getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
-        );
+
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(this);
 
@@ -97,12 +95,14 @@ public class MainActivity extends AppCompatActivity implements FuelView  {
     protected void onStart() {
         super.onStart();
         Log.e(LOGTAG, "onStart");
+
         prefs = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
+
         boolean settingsNewTheme = prefs.getBoolean("night_mode", false);
+
         if (darkThemeOn != settingsNewTheme){
             this.recreate();
-            recyclerAdapter.isNightMode(darkThemeOn);
         }
 
         fuelPresenter = new FuelPresenterImpl(this);

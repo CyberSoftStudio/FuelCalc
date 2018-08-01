@@ -33,7 +33,6 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
     private int lastExpandedPosition = -1;
     private static final int additionalInfoHeightDp = 85;
     private boolean playExpantionAnimation = false;
-    boolean darkModeOn = false;
 
     public void setBasePosition(int basePosition) {
         this.basePosition = basePosition;
@@ -63,11 +62,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         notifyDataSetChanged();
     }
 
-    public void isNightMode(boolean isOn) {
-        darkModeOn = isOn;
-    }
-
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor")////////////////////////////////////////////////////////////////
     @Override
     public void onBindViewHolder(@NonNull final FuelViewHolder holder, final int position) {
         holder.fuelNameTextView.setText(items.get(position).getName());
