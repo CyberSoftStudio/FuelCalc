@@ -199,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
     public void onClickDeleteBtn(View v) {
         Log.e(LOGTAG, "onClickDelete");
+        Toast.makeText(this, "Fuel deleted!", Toast.LENGTH_SHORT).show();
         ViewGroup parentLayout = (ViewGroup) v.getParent().getParent();
 
         TextView tv = parentLayout.findViewById(R.id.fuelName);

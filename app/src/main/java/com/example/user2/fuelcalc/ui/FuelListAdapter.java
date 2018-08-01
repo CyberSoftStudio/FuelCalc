@@ -158,7 +158,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                 holder.additionalInfoLauout.getLayoutParams().height = 0;
                 holder.additionalInfoLauout.setVisibility(View.VISIBLE);
                 animation.setInterpolator(new AccelerateInterpolator());
-                animation.setDuration(400);
+                animation.setDuration(200);
                 holder.additionalInfoLauout.setAnimation(animation);
                 holder.additionalInfoLauout.startAnimation(animation);
 
