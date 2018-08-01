@@ -1,9 +1,11 @@
 package com.example.user2.fuelcalc.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -17,9 +19,13 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user2.fuelcalc.R;
@@ -34,17 +40,36 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private static final String LOGTAG = "SettingsActivity";
 
     private FuelModel fuelModel;
+    Switch switcher;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (sharedPreferences.getBoolean("night_mode", false)) {
+            setTheme(R.style.DarkTheme);
+        } else {
+            setTheme(R.style.LightTheme);
+        }
         setContentView(R.layout.settings_activity);
+        if (sharedPreferences.getBoolean("night_mode", false)) {
+            findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.Coal));
+
+        } else {
+            findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.White));
+        }
         fuelModel = new FuelModelImpl();
+        switcher = findViewById(R.id.switcher);
+        switcher.setChecked(sharedPreferences.getBoolean("night_mode", false));
+        switcher.setOnCheckedChangeListener(this);
+
     }
 
 
@@ -69,7 +94,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(findViewById(R.id.add_fuel_layout).getVisibility() == View.VISIBLE) {
+        if (findViewById(R.id.add_fuel_layout).getVisibility() == View.VISIBLE) {
             onClickAddBtnCancel(findViewById(R.id.add_fuel_btn));
         } else {
             super.onBackPressed();
@@ -157,5 +182,23 @@ public class SettingsActivity extends AppCompatActivity {
 
         showToast("Fuel list was reset to default");
         fuelModel.resetFuelTypesToDefault();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+        editor = sharedPreferences.edit();
+
+        if (b) {
+            Toast.makeText(this, "NightMode", Toast.LENGTH_SHORT).show();
+            editor.putBoolean("night_mode", true);
+            recreate();
+        } else {
+            Toast.makeText(this, "DayMode", Toast.LENGTH_SHORT).show();
+            editor.putBoolean("night_mode", false);
+            recreate();
+        }
+
+        editor.apply();
     }
 }

@@ -97,10 +97,11 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         super.onStart();
         Log.e(LOGTAG, "onStart");
 
+
         prefs = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
-
         boolean settingsNewTheme = prefs.getBoolean("night_mode", false);
+        Toast.makeText(this, ""+settingsNewTheme, Toast.LENGTH_SHORT).show();
 
         if (darkThemeOn != settingsNewTheme) {
             this.recreate();

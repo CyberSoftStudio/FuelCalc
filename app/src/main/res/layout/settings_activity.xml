@@ -5,35 +5,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:windowSoftInputMode="adjustPan">
+    android:windowSoftInputMode="adjustPan"
+    >
 
 
     <LinearLayout
-        android:id="@+id/settings_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/settings_layout"
         android:background="@color/WhiteSmoke"
         android:orientation="vertical"
         android:theme="@style/SettingsTheme"
         tools:context="com.example.user2.fuelcalc.ui.SettingsActivity">
 
-        <fragment
-            android:id="@+id/settings_fragment"
-            android:name="com.example.user2.fuelcalc.ui.SettingsFragment"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/cute_btn_style"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/nmText"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Black"
+                android:paddingLeft="10dp"
+                android:text="Night Mode"
+                android:layout_weight="0.8"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:id="@+id/switcher"
+                android:textOff="off"
+                android:textOn="on"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/reset_fuel_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:onClick="onClickResetDefaultBtn"
-            android:text="Reset fuel list to default"
+            android:gravity="center_vertical"
             android:background="@drawable/cute_btn_style"
+            android:textSize="18sp"
+            android:text="@string/reset_fuel_list_to_default"
             android:paddingEnd="40dp"
-            android:paddingStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"/>
+            android:layout_marginTop="10dp"
+            android:paddingStart="10dp"
+            />
 
         <Button
             android:id="@+id/add_fuel_btn"
@@ -57,7 +83,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
-        android:background="@color/Gray"
+        android:background="@drawable/cute_btn_style"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -152,6 +178,8 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -161,16 +189,16 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:background="@color/SlateGray"
+                android:layout_height="50dp"
+                android:background="@drawable/cute_btn_style"
                 android:layout_margin="2dp"
                 android:text="Accept"
                 android:onClick="onClickAddBtnAccept"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:background="@color/SlateGray"
+                android:layout_height="50dp"
+                android:background="@drawable/cute_btn_style"
                 android:layout_margin="2dp"
                 android:text="Cancel"
                 android:onClick="onClickAddBtnCancel"/>

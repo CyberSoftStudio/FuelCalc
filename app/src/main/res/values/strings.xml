@@ -5,4 +5,5 @@
     <string name="donate">Donate</string>
     <string name="about_us">About us</string>
     <string name="help">Help</string>
+    <string name="reset_fuel_list_to_default">Reset fuel list to default</string>
 </resources>
