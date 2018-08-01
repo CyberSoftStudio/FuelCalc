@@ -1,5 +1,8 @@
 package com.example.user2.fuelcalc.ui;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,6 +30,8 @@ import com.example.user2.fuelcalc.mvp.FuelView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.graphics.Color.BLUE;
 
 public class MainActivity extends AppCompatActivity implements FuelView {
 
@@ -178,6 +183,16 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         String curFuelName = curFuelNameTextView.getText().toString();
 
         fuelPresenter.processClick(curFuelName);
+
+        if (darkThemeOn) {
+
+            animateBase(getResources().getColor(R.color.gray),
+                    getResources().getColor(R.color.LightCoal));
+        }
+        else {
+            animateBase(getResources().getColor(R.color.gray),
+                    getResources().getColor(R.color.white));
+        }
     }
 
     public void onClickExpandButton(View v) {
@@ -206,4 +221,16 @@ public class MainActivity extends AppCompatActivity implements FuelView {
         fuelPresenter.processDeleteButnClick(fuelName, recyclerAdapter.getExpanded());
     }
 
+    private void animateBase(int color1, int color2) {
+
+        View aimView = findViewById(R.id.base_fuel_layout);
+
+        ValueAnimator colorAnim = ObjectAnimator.ofInt(aimView,
+                "backgroundColor", color1, color2);
+        colorAnim.setDuration(900);
+        colorAnim.setEvaluator(new ArgbEvaluator());
+        colorAnim.setRepeatCount(0);
+        colorAnim.setRepeatMode(ValueAnimator.REVERSE);
+        colorAnim.start();
+    }
 }
