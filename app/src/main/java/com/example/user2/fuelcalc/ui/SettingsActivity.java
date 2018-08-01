@@ -137,7 +137,9 @@ public class SettingsActivity extends AppCompatActivity {
         showToast("New fuel added");
     }
 
+
     public void onClickAddBtnCancel(View v) {
+
         View addLayout = findViewById(R.id.add_fuel_layout);
         addLayout.setVisibility(View.GONE);
         ((EditText) findViewById(R.id.fuel_name_inp_field)).setText("");
@@ -151,5 +153,14 @@ public class SettingsActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             Log.e(LOGTAG, e.toString());
         }
+    }
+
+
+    public void onClickResetDefaultBtn(View v) {
+
+        Realm realm = Realm.getDefaultInstance();
+        ArrayList<FuelType> fuelTypes = new ArrayList<>();
+
+
     }
 }

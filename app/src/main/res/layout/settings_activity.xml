@@ -24,6 +24,18 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/reset_fuel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickResetDefaultBtn"
+            android:text="Reset fuel list to default"
+            android:background="@drawable/cute_btn_style"
+            android:paddingEnd="40dp"
+            android:paddingStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"/>
+
+        <Button
             android:id="@+id/add_fuel_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
