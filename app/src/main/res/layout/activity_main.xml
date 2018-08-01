@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"/>
         <TextView
             android:id="@+id/base_unit"
             android:layout_width="0dp"
