@@ -15,4 +15,8 @@ public interface FuelModel {
     List<FuelType> getFuelTypes ();
 
     void deleteFuel(int position);
+
+    void addFuel(FuelType newFuelType);
+
+    void resetFuelTypesToDefault();
 }

@@ -25,6 +25,8 @@ import android.widget.Toast;
 import com.example.user2.fuelcalc.R;
 import com.example.user2.fuelcalc.fuels.FuelType;
 import com.example.user2.fuelcalc.fuels.RealmFuelType;
+import com.example.user2.fuelcalc.mvp.FuelModel;
+import com.example.user2.fuelcalc.mvp.FuelModelImpl;
 
 import java.util.ArrayList;
 
@@ -35,10 +37,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     private static final String LOGTAG = "SettingsActivity";
 
+    private FuelModel fuelModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+        fuelModel = new FuelModelImpl();
     }
 
 
@@ -108,30 +113,10 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
 
-        Realm realm = Realm.getDefaultInstance();
-
-        RealmResults<RealmFuelType> realmResults = realm.where(RealmFuelType.class).findAll();
-
-        ArrayList<FuelType> fuelTypes = new ArrayList<>();
-        for (RealmFuelType curRealmFuelType : realmResults) {
-            fuelTypes.add(curRealmFuelType.getFuelType());
-        }
-
-        fuelTypes.add(new FuelType(fuelName, unitName, -1.0, priceDouble, -1.0,
+        fuelModel.addFuel(new FuelType(fuelName, unitName, -1.0, priceDouble, -1.0,
                 caloricityDouble));
 
-
-        realm.beginTransaction();
-        realm.deleteAll();
-
-        ArrayList<RealmFuelType> realmFuelTypes = new ArrayList<>();
-        for (FuelType curFuelType : fuelTypes) {
-            realmFuelTypes.add(curFuelType.getRealmFuelType());
-        }
-
-        realm.insert(realmFuelTypes);
-        realm.commitTransaction();
-
+        fuelModel.saveData();
 
         onClickAddBtnCancel(v);
 
@@ -159,9 +144,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void onClickResetDefaultBtn(View v) {
 
-        Realm realm = Realm.getDefaultInstance();
-        ArrayList<FuelType> fuelTypes = new ArrayList<>();
-
-
+        showToast("Fuel list was reset to default");
+        fuelModel.resetFuelTypesToDefault();
     }
 }

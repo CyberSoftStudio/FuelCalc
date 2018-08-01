@@ -36,23 +36,7 @@ public class FuelModelImpl implements FuelModel {
         }
 
         if (fuelTypes.size() == 0) {
-            Log.e(LOGTAG, "Filling with default fuel types");
-            fuelTypes.add(new FuelType("CNG", -1, "m\u00B3", 1, 0.25, 1,
-                    7600));
-            fuelTypes.add(new FuelType("Diesel", -1, "l", 1, 1.00, 1,
-                    10300));
-            fuelTypes.add(new FuelType("Gas", -1, "l", 1, 1.20, 1,
-                    10500));
-            fuelTypes.add(new FuelType("Coal", -1, "kg", 1, 0.20, 1,
-                    4000));
-            fuelTypes.add(new FuelType("Wood", -1, "kg", 1, 0.03, 1,
-                    2000));
-            fuelTypes.add(new FuelType("Pellets", -1, "m\u00B3", 1, 0.10,
-                    1, 4800));
-            fuelTypes.add(new FuelType("Electricity", -1, "kWt/h", 1, 0.10,
-                    1, -1));
-            fuelTypes.add(new FuelType("LPG", -1, "l", 1, -1.00, 1,
-                    10800));
+            resetFuelTypesToDefaultWithoutSaving();
         }
     }
 
@@ -98,5 +82,41 @@ public class FuelModelImpl implements FuelModel {
     @Override
     public void deleteFuel(int position) {
         fuelTypes.remove(position);
+    }
+
+
+    @Override
+    public void addFuel(FuelType newFuelType) {
+        fuelTypes.add(newFuelType);
+    }
+
+
+    @Override
+    public void resetFuelTypesToDefault() {
+            resetFuelTypesToDefaultWithoutSaving();
+            saveData();
+    }
+
+
+    private void resetFuelTypesToDefaultWithoutSaving() {
+        Log.e(LOGTAG, "Filling with default fuel types");
+        fuelTypes.clear();
+
+        fuelTypes.add(new FuelType("CNG", -1, "m\u00B3", 1, 0.25, 1,
+                7600));
+        fuelTypes.add(new FuelType("Diesel", -1, "l", 1, 1.00, 1,
+                10300));
+        fuelTypes.add(new FuelType("Gas", -1, "l", 1, 1.20, 1,
+                10500));
+        fuelTypes.add(new FuelType("Coal", -1, "kg", 1, 0.20, 1,
+                4000));
+        fuelTypes.add(new FuelType("Wood", -1, "kg", 1, 0.03, 1,
+                2000));
+        fuelTypes.add(new FuelType("Pellets", -1, "m\u00B3", 1, 0.10,
+                1, 4800));
+        fuelTypes.add(new FuelType("Electricity", -1, "kWt/h", 1, 0.10,
+                1, -1));
+        fuelTypes.add(new FuelType("LPG", -1, "l", 1, -1.00, 1,
+                10800));
     }
 }
