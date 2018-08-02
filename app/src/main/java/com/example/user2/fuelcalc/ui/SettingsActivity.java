@@ -3,6 +3,7 @@ package com.example.user2.fuelcalc.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
@@ -39,6 +40,8 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
@@ -116,6 +119,12 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
     public void onClickAddBtn(View v) {
         View addLayout = findViewById(R.id.add_fuel_layout);
+
+        if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE) {
+            FrameLayout.LayoutParams params=(FrameLayout.LayoutParams)addLayout.getLayoutParams();
+            params.setMargins(params.getMarginStart(), 0, params.getMarginEnd(), 0);
+        }
+
         addLayout.setVisibility(View.VISIBLE);
     }
 
