@@ -1,5 +1,6 @@
 package com.example.user2.fuelcalc.ui;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
@@ -73,30 +74,18 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         switcher.setChecked(sharedPreferences.getBoolean("night_mode", false));
         switcher.setOnCheckedChangeListener(this);
 
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.e(LOGTAG, e.toString());
+        }
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        if (sharedPreferences.getBoolean("night_mode", false)) {
-            getMenuInflater().inflate(R.menu.settings_menu_dark, menu);
-        }else {
-            getMenuInflater().inflate(R.menu.settings_menu, menu);
-        }
+    public boolean onSupportNavigateUp(){
+        finish();
         return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getTitle().toString()) {
-            case "Back":
-                onBackPressed();
-                break;
-            default:
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -184,7 +173,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         ((EditText) findViewById(R.id.price_inp_field)).setText("");
 
         try {
-            InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
+            InputMethodManager imm =(InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         } catch (NullPointerException e) {
             Log.e(LOGTAG, e.toString());
