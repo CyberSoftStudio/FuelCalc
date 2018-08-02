@@ -111,7 +111,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
         if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE) {
             FrameLayout.LayoutParams params=(FrameLayout.LayoutParams)addLayout.getLayoutParams();
-            params.setMargins(params.getMarginStart(), 0, params.getMarginEnd(), 0);
+            params.setMargins(params.getMarginStart(), 5, params.getMarginEnd(), 5);
         }
 
         addLayout.setVisibility(View.VISIBLE);

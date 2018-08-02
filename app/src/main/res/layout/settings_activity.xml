@@ -5,14 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:windowSoftInputMode="adjustPan"
-    >
+    android:windowSoftInputMode="adjustPan">
 
 
     <LinearLayout
+        android:id="@+id/settings_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/settings_layout"
         android:background="@color/WhiteSmoke"
         android:orientation="vertical"
         android:theme="@style/SettingsTheme"
@@ -22,195 +21,206 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/cute_btn_style"
-            android:orientation="horizontal"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp">
+            android:orientation="horizontal">
+
             <TextView
-                android:layout_width="wrap_content"
                 android:id="@+id/nmText"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Black"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="NIGHT MODE"
-                android:layout_weight="0.8"
-                android:textSize="18sp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                />
-            <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8"
+                android:gravity="center_vertical"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:text="NIGHT MODE"
+                android:textColor="@color/Black"
+                android:textSize="18sp" />
+
+            <Switch
                 android:id="@+id/switcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.2"
                 android:textOff="off"
-                android:textOn="on"
-                android:layout_gravity="center_vertical"/>
+                android:textOn="on" />
         </LinearLayout>
 
         <Button
             android:id="@+id/reset_fuel_btn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:onClick="onClickResetDefaultBtn"
-            android:gravity="center"
-            android:background="@drawable/cute_btn_style"
-            android:textSize="18sp"
-            android:text="@string/reset_fuel_list_to_default"
-            android:paddingEnd="10dp"
-            android:layout_marginTop="20dp"
-            android:paddingStart="10dp"
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
-            />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/cute_btn_style"
+            android:gravity="center"
+            android:onClick="onClickResetDefaultBtn"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="@string/reset_fuel_list_to_default"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/add_fuel_btn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:onClick="onClickAddBtn"
-            android:text="Add fuel"
-            android:textSize="18sp"
-            android:background="@drawable/cute_btn_style"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/cute_btn_style"
+            android:onClick="onClickAddBtn"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="Add fuel"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/add_fuel_layout"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="10dp"
-        android:padding="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/cute_btn_style"
         android:orientation="vertical"
+        android:padding="10dp"
         android:visibility="gone">
 
-
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Input necessary values"
-            android:textSize="22sp"
-            android:gravity="center"
-            android:layout_marginBottom="7dp"/>
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fuel name:  "
-                android:textSize="18sp"/>
-
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/fuel_name_inp_field"
-                android:inputType="text"/>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:gravity="center"
+                    android:text="Input necessary values"
+                    android:textSize="22sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Unit name:  "
-                android:textSize="18sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/unit_name_inp_field"
-                android:inputType="text"/>
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fuel name:  "
+                        android:textSize="18sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+                    <EditText
+                        android:id="@+id/fuel_name_inp_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Caloricity:  "
-                android:textSize="18sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/caloricity_inp_field"
-                android:inputType="number"/>
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Unit name:  "
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/unit_name_inp_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Caloricity:  "
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/caloricity_inp_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price per unit ($):  "
-                android:textSize="18sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price per unit ($):  "
+                        android:textSize="18sp" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/price_inp_field"
-                android:inputType="number"/>
-        </LinearLayout>
+                    <EditText
+                        android:id="@+id/price_inp_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="50dp"
-                android:background="@drawable/cute_btn_style"
-                android:layout_margin="2dp"
-                android:text="Accept"
-                android:onClick="onClickAddBtnAccept"/>
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="50dp"
-                android:background="@drawable/cute_btn_style"
-                android:layout_margin="2dp"
-                android:text="Cancel"
-                android:onClick="onClickAddBtnCancel"/>
-        </LinearLayout>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="2dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/cute_btn_style"
+                        android:onClick="onClickAddBtnAccept"
+                        android:text="Accept" />
 
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="2dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/cute_btn_style"
+                        android:onClick="onClickAddBtnCancel"
+                        android:text="Cancel" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 
