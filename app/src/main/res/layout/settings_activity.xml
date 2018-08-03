@@ -24,7 +24,6 @@
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/cute_btn_style"
             android:orientation="horizontal">
 
             <TextView

@@ -46,9 +46,10 @@ public class SettingsActivity extends AppCompatActivity
         setContentView(R.layout.settings_activity);
         if (sharedPreferences.getBoolean("night_mode", false)) {
             findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.Coal));
-
+            ((TextView)findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
         } else {
             findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.White));
+            ((TextView)findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
         }
         fuelModel = new FuelModelImpl();
         switcher = findViewById(R.id.switcher);
@@ -70,7 +71,7 @@ public class SettingsActivity extends AppCompatActivity
     }
 
 
-    public void showSnackbar(View background, String message) {
+    private void showSnackbar(View background, String message) {
         Snackbar snackbar = Snackbar
                 .make(background, message, Snackbar.LENGTH_SHORT);
 
@@ -82,10 +83,15 @@ public class SettingsActivity extends AppCompatActivity
     }
 
 
+    private void showToast(String msg) {
+        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+
     public void onClickAddBtn(View v) {
 
-        //DialogFragment dialog = new AddFuelDialogFragment();
-        //dialog.show(getSupportFragmentManager(), "AddFuelDialogFragment");
+        DialogFragment dialog = new AddFuelDialogFragment();
+        dialog.show(getSupportFragmentManager(), "AddFuelDialogFragment");
     }
 
 
@@ -102,11 +108,9 @@ public class SettingsActivity extends AppCompatActivity
         editor = sharedPreferences.edit();
 
         if (b) {
-            Toast.makeText(this, "NightMode", Toast.LENGTH_SHORT).show();
             editor.putBoolean("night_mode", true);
             recreate();
         } else {
-            Toast.makeText(this, "DayMode", Toast.LENGTH_SHORT).show();
             editor.putBoolean("night_mode", false);
             recreate();
         }
@@ -121,7 +125,7 @@ public class SettingsActivity extends AppCompatActivity
 
 
         if (fuelName.equals("") || unitName.equals("") || caloricity.equals("") || price.equals("")) {
-            showSnackbar(dialog.getView(), "All input fields must not be empty");
+            showToast("All input fields must not be empty");
             return;
         }
 
@@ -129,7 +133,7 @@ public class SettingsActivity extends AppCompatActivity
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
         for (FuelType curFuelType : fuelTypes) {
             if (curFuelType.getName().equals(fuelName)) {
-                showSnackbar(dialog.getView(), "Fuel with this name already exists\nChoose other fuel name");
+                showToast("Fuel with this name already exists\nChoose other fuel name");
                 return;
             }
         }
@@ -142,7 +146,7 @@ public class SettingsActivity extends AppCompatActivity
             caloricityDouble = Double.parseDouble(caloricity);
 
         } catch (NumberFormatException e) {
-            showSnackbar(dialog.getView(), "\"Caloricity\" and \"price\" fields must contain only numbers");
+            showToast("\"Caloricity\" and \"price\" fields must contain only numbers");
             return;
         }
 
