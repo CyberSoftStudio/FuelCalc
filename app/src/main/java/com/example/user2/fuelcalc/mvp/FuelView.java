@@ -16,6 +16,6 @@ public interface FuelView {
 
     void updateExpanded(List<Boolean> expanded, int lastExpandedPosition);
 
-    void showToast(String message);
+    void showSnackbar(String message);
 
 }

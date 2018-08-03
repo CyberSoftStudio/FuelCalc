@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,11 +38,12 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
     private static final String LOGTAG = "MainActivity";
 
-    RecyclerView recyclerView;
-    FuelListAdapter recyclerAdapter;
-    FuelPresenter fuelPresenter;
+    private RecyclerView recyclerView;
+    private FuelListAdapter recyclerAdapter;
+    private FuelPresenter fuelPresenter;
     private boolean darkThemeOn = false;
-    SharedPreferences prefs;
+    private SharedPreferences prefs;
+    private View baseLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
             }
         });
+
+        baseLayout = findViewById(R.id.main_layout);
     }
 
 
@@ -170,12 +174,20 @@ public class MainActivity extends AppCompatActivity implements FuelView {
     }
 
 
+
     @Override
-    public void showToast(String message) {
-        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+    public void showSnackbar(String message) {
+        Snackbar snackbar = Snackbar
+                .make(baseLayout, message, Snackbar.LENGTH_SHORT);
+
+        int snackbarTextId = android.support.design.R.id.snackbar_text;
+        TextView tv = snackbar.getView().findViewById(snackbarTextId);
+        tv.setTextColor(getResources().getColor(R.color.White));
+
+        snackbar.show();
     }
+
+
 
     @Override
     public void onClick(View view) {
@@ -213,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements FuelView {
 
     public void onClickDeleteBtn(View v) {
         Log.e(LOGTAG, "onClickDelete");
-        Toast.makeText(this, "Fuel deleted!", Toast.LENGTH_SHORT).show();
+        showSnackbar("Fuel deleted");
         ViewGroup parentLayout = (ViewGroup) v.getParent().getParent();
 
         TextView tv = parentLayout.findViewById(R.id.fuelName);

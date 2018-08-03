@@ -103,7 +103,7 @@ public class FuelPresenterImpl implements FuelPresenter {
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
 
         if(fuelTypes.size() == 1) {
-            fuelView.showToast("You can't delete last fuel");
+            fuelView.showSnackbar("You can't delete last fuel");
 
             return;
         }

@@ -53,9 +53,7 @@ public class ConfirmResetDialogFragment extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-
-        builder.setTitle("Reset fuel list to default")
+        builder.setTitle("Are you sure?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
