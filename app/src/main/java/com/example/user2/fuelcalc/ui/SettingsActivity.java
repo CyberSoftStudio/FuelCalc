@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -44,7 +45,11 @@ import io.realm.RealmResults;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
-public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class SettingsActivity extends AppCompatActivity
+        implements CompoundButton.OnCheckedChangeListener,
+        AddFuelDialogFragment.AddFuelDialogListener,
+        ConfirmResetDialogFragment.ConfirmResetDialogListener {
+
 
     private static final String LOGTAG = "SettingsActivity";
 
@@ -89,16 +94,6 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
     }
 
 
-    @Override
-    public void onBackPressed() {
-        if (findViewById(R.id.add_fuel_layout).getVisibility() == View.VISIBLE) {
-            onClickAddBtnCancel(findViewById(R.id.add_fuel_btn));
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-
     public void showToast(String message) {
         Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -107,23 +102,42 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
 
     public void onClickAddBtn(View v) {
-        View addLayout = findViewById(R.id.add_fuel_layout);
 
-        if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE) {
-            FrameLayout.LayoutParams params=(FrameLayout.LayoutParams)addLayout.getLayoutParams();
-            params.setMargins(params.getMarginStart(), 5, params.getMarginEnd(), 5);
-        }
-
-        addLayout.setVisibility(View.VISIBLE);
+        DialogFragment dialog = new AddFuelDialogFragment();
+        dialog.show(getSupportFragmentManager(), "AddFuelDialogFragment");
     }
 
 
-    public void onClickAddBtnAccept(View v) {
+    public void onClickResetDefaultBtn(View v) {
 
-        String fuelName = ((EditText) findViewById(R.id.fuel_name_inp_field)).getText().toString();
-        String unitName = ((EditText) findViewById(R.id.unit_name_inp_field)).getText().toString();
-        String caloricity = ((EditText) findViewById(R.id.caloricity_inp_field)).getText().toString();
-        String price = ((EditText) findViewById(R.id.price_inp_field)).getText().toString();
+        DialogFragment dialog = new ConfirmResetDialogFragment();
+        dialog.show(getSupportFragmentManager(), "ConfirmResetDialogFragment");
+    }
+
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+        editor = sharedPreferences.edit();
+
+        if (b) {
+            Toast.makeText(this, "NightMode", Toast.LENGTH_SHORT).show();
+            editor.putBoolean("night_mode", true);
+            recreate();
+        } else {
+            Toast.makeText(this, "DayMode", Toast.LENGTH_SHORT).show();
+            editor.putBoolean("night_mode", false);
+            recreate();
+        }
+
+        editor.apply();
+    }
+
+
+    @Override
+    public void onAddFuelDialogPositiveClick(DialogFragment dialog, String fuelName,
+                                             String unitName, String caloricity, String price) {
+
 
         if (fuelName.equals("") || unitName.equals("") || caloricity.equals("") || price.equals("")) {
             showToast("All input fields must not be empty");
@@ -157,51 +171,28 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
         fuelModel.saveData();
 
-        onClickAddBtnCancel(v);
+        dialog.getDialog().cancel();
 
         showToast("New fuel added");
     }
 
 
-    public void onClickAddBtnCancel(View v) {
-
-        View addLayout = findViewById(R.id.add_fuel_layout);
-        addLayout.setVisibility(View.GONE);
-        ((EditText) findViewById(R.id.fuel_name_inp_field)).setText("");
-        ((EditText) findViewById(R.id.unit_name_inp_field)).setText("");
-        ((EditText) findViewById(R.id.caloricity_inp_field)).setText("");
-        ((EditText) findViewById(R.id.price_inp_field)).setText("");
-
-        try {
-            InputMethodManager imm =(InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        } catch (NullPointerException e) {
-            Log.e(LOGTAG, e.toString());
-        }
+    @Override
+    public void onAddFuelDialogNegativeClick(DialogFragment dialog) {
+        dialog.getDialog().cancel();
     }
 
 
-    public void onClickResetDefaultBtn(View v) {
+    @Override
+    public void onConfirmResetDialogPositiveClick(DialogFragment dialog) {
 
         showToast("Fuel list was reset to default");
         fuelModel.resetFuelTypesToDefault();
+        dialog.getDialog().cancel();
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-        editor = sharedPreferences.edit();
-
-        if (b) {
-            Toast.makeText(this, "NightMode", Toast.LENGTH_SHORT).show();
-            editor.putBoolean("night_mode", true);
-            recreate();
-        } else {
-            Toast.makeText(this, "DayMode", Toast.LENGTH_SHORT).show();
-            editor.putBoolean("night_mode", false);
-            recreate();
-        }
-
-        editor.apply();
+    public void onConfirmResetDialogNegativeClick(DialogFragment dialog) {
+        dialog.getDialog().cancel();
     }
 }
