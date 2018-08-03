@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +36,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
     private int lastExpandedPosition = -1;
     private static final int additionalInfoHeightDp = 85;
     private boolean playExpantionAnimation = false;
+    boolean onFirstLaunch = true;
 
     public void setBasePosition(int basePosition) {
         this.basePosition = basePosition;
@@ -61,6 +65,8 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         this.items = newItems;
         notifyDataSetChanged();
     }
+
+
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -112,6 +118,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                     .getApplicationContext().getResources().getColor(R.color.White));
             holder.priceTextView.setTextColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.White));
+
         } else {
             holder.rowLinearLayout.setBackgroundColor(holder.rowLinearLayout.getContext()
                     .getApplicationContext().getResources().getColor(R.color.White));
@@ -128,14 +135,28 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
 
 
         if (expanded.get(position).equals(false)) {
+            holder.additionalInfoLauout.setVisibility(View.GONE);
+
+
             if (!prefs.getBoolean("night_mode", false)) {
                 imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px);
             } else {
                 imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px_light);
             }
-            holder.additionalInfoLauout.setVisibility(View.GONE);
+
 
             if (position == lastExpandedPosition && playExpantionAnimation) {
+
+                RotateAnimation rotate = new RotateAnimation(180, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                rotate.setDuration(200);
+                rotate.setFillAfter(true);
+                rotate.setInterpolator(new LinearInterpolator());
+                imageButton.startAnimation(rotate);
+
+
+
+
+
                 Animation animation = new SlideAnimationDown(holder.additionalInfoLauout,
                         px, 0);
                 holder.additionalInfoLauout.getLayoutParams().height = px;
@@ -148,15 +169,23 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                 playExpantionAnimation = false;
             }
         } else {
+            holder.additionalInfoLauout.setVisibility(View.VISIBLE);
 
             if (!prefs.getBoolean("night_mode", false)) {
                 imageButton.setImageResource(R.drawable.ic_baseline_expand_less_24px);
             } else {
                 imageButton.setImageResource(R.drawable.ic_baseline_expand_less_24px_light);
             }
-            holder.additionalInfoLauout.setVisibility(View.VISIBLE);
 
             if (position == lastExpandedPosition && playExpantionAnimation) {
+                RotateAnimation rotate = new RotateAnimation(180, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                rotate.setDuration(200);
+                rotate.setFillAfter(true);
+                rotate.setInterpolator(new LinearInterpolator());
+                imageButton.startAnimation(rotate);
+
+
+
                 Animation animation = new SlideAnimationDown(holder.additionalInfoLauout,
                         0, px);
                 holder.additionalInfoLauout.getLayoutParams().height = 0;
