@@ -1,49 +1,25 @@
 package com.example.user2.fuelcalc.ui;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Rect;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user2.fuelcalc.R;
 import com.example.user2.fuelcalc.fuels.FuelType;
-import com.example.user2.fuelcalc.fuels.RealmFuelType;
 import com.example.user2.fuelcalc.mvp.FuelModel;
 import com.example.user2.fuelcalc.mvp.FuelModelImpl;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import io.realm.Realm;
-import io.realm.RealmResults;
-
-import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class SettingsActivity extends AppCompatActivity
         implements CompoundButton.OnCheckedChangeListener,
@@ -94,17 +70,22 @@ public class SettingsActivity extends AppCompatActivity
     }
 
 
-    public void showToast(String message) {
-        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+    public void showSnackbar(View background, String message) {
+        Snackbar snackbar = Snackbar
+                .make(background, message, Snackbar.LENGTH_SHORT);
+
+        int snackbarTextId = android.support.design.R.id.snackbar_text;
+        TextView tv = snackbar.getView().findViewById(snackbarTextId);
+        tv.setTextColor(getResources().getColor(R.color.White));
+
+        snackbar.show();
     }
 
 
     public void onClickAddBtn(View v) {
 
-        DialogFragment dialog = new AddFuelDialogFragment();
-        dialog.show(getSupportFragmentManager(), "AddFuelDialogFragment");
+        //DialogFragment dialog = new AddFuelDialogFragment();
+        //dialog.show(getSupportFragmentManager(), "AddFuelDialogFragment");
     }
 
 
@@ -140,7 +121,7 @@ public class SettingsActivity extends AppCompatActivity
 
 
         if (fuelName.equals("") || unitName.equals("") || caloricity.equals("") || price.equals("")) {
-            showToast("All input fields must not be empty");
+            showSnackbar(dialog.getView(), "All input fields must not be empty");
             return;
         }
 
@@ -148,7 +129,7 @@ public class SettingsActivity extends AppCompatActivity
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
         for (FuelType curFuelType : fuelTypes) {
             if (curFuelType.getName().equals(fuelName)) {
-                showToast("Fuel with this name already exists\nChoose other fuel name");
+                showSnackbar(dialog.getView(), "Fuel with this name already exists\nChoose other fuel name");
                 return;
             }
         }
@@ -161,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity
             caloricityDouble = Double.parseDouble(caloricity);
 
         } catch (NumberFormatException e) {
-            showToast("\"Caloricity\" and \"price\" fields must contain only numbers");
+            showSnackbar(dialog.getView(), "\"Caloricity\" and \"price\" fields must contain only numbers");
             return;
         }
 
@@ -173,7 +154,7 @@ public class SettingsActivity extends AppCompatActivity
 
         dialog.getDialog().cancel();
 
-        showToast("New fuel added");
+        showSnackbar(findViewById(R.id.settings_layout), "New fuel added");
     }
 
 
@@ -186,7 +167,7 @@ public class SettingsActivity extends AppCompatActivity
     @Override
     public void onConfirmResetDialogPositiveClick(DialogFragment dialog) {
 
-        showToast("Fuel list was reset to default");
+        showSnackbar(findViewById(R.id.settings_layout), "Fuel list was reset to default");
         fuelModel.resetFuelTypesToDefault();
         dialog.getDialog().cancel();
     }

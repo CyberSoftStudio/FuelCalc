@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    >
     <EditText
         android:id="@+id/add_fuel_name"
         android:inputType="textEmailAddress"
@@ -51,7 +51,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/buttonPanel">
 
         <Button
             android:id="@+id/add_fuel_btn_accept"

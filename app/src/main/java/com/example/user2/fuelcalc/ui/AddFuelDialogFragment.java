@@ -73,9 +73,8 @@ public class AddFuelDialogFragment extends DialogFragment {
     public void onResume() {
         super.onResume();
 
-        AlertDialog alertDialog = (AlertDialog) getDialog();
-        Button acceptButton = layout.findViewById(R.id.add_fuel_btn_accept);
-        acceptButton.setOnClickListener(new View.OnClickListener() {
+        //Button acceptButton = layout.findViewById(R.id.add_fuel_btn_accept);
+        /*acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -94,15 +93,15 @@ public class AddFuelDialogFragment extends DialogFragment {
                 mListener.onAddFuelDialogPositiveClick(AddFuelDialogFragment.this,
                         fuel_name, unit_name, caloricity, price);
             }
-        });
+        });*/
 
-        Button cancelButton = layout.findViewById(R.id.add_fuel_btn_cancel);
+        /*Button cancelButton = layout.findViewById(R.id.add_fuel_btn_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 mListener.onAddFuelDialogNegativeClick(AddFuelDialogFragment.this);
             }
-        });
+        });*/
     }
 }
