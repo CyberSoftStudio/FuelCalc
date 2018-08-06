@@ -4,6 +4,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
@@ -50,11 +51,9 @@ public class SettingsActivity extends AppCompatActivity
         setContentView(R.layout.settings_activity);
         this.setTitle("Settings");
         if (sharedPreferences.getBoolean("night_mode", false)) {
-            findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.Coal));
-            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
+
         } else {
-            findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.White));
-            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
+
         }
         fuelModel = new FuelModelImpl();
         switcher = findViewById(R.id.switcher);
@@ -68,6 +67,18 @@ public class SettingsActivity extends AppCompatActivity
         }
     }
 
+    private void animateBase(View aimView,int color1, int color2) {
+
+
+
+        ValueAnimator colorAnim = ObjectAnimator.ofInt(aimView,
+                "backgroundColor", color1, color2);
+        colorAnim.setDuration(250);
+        colorAnim.setEvaluator(new ArgbEvaluator());
+        colorAnim.setRepeatCount(0);
+        colorAnim.setRepeatMode(ValueAnimator.REVERSE);
+        colorAnim.start();
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -113,10 +124,17 @@ public class SettingsActivity extends AppCompatActivity
 
         if (b) {
             editor.putBoolean("night_mode", true);
-            recreate();
+            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Coal));
+
+            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
         } else {
             editor.putBoolean("night_mode", false);
-            recreate();
+            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.Coal),
+                    getResources().getColor(R.color.White));
+
+            findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.White));
+            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
         }
 
         editor.apply();
