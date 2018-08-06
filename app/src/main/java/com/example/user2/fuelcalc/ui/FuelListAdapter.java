@@ -128,7 +128,7 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                     .getApplicationContext().getResources().getColor(R.color.DarkYellow));
         }
 
-        ImageButton imageButton = holder.rowLinearLayout.findViewById(R.id.arrow);
+        ImageButton imageButton = holder.rowLinearLayout.findViewById(R.id.back_arrow);
 
         DisplayMetrics displayMetrics = holder.rowLinearLayout.getContext().getResources().getDisplayMetrics();
         int px = Math.round(additionalInfoHeightDp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));

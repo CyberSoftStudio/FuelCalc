@@ -17,6 +17,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,12 +48,8 @@ public class SettingsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        if (sharedPreferences.getBoolean("night_mode", false)) {
-        } else {
-        }
-
         setContentView(R.layout.settings_activity);
-        this.setTitle("Settings");
+        changeTheme (sharedPreferences.getBoolean("night_mode", false));
 
         fuelModel = new FuelModelImpl();
         switcher = findViewById(R.id.switcher);
@@ -61,10 +58,15 @@ public class SettingsActivity extends AppCompatActivity
 
     }
 
-    private void animateBase(View aimView, int color1, int color2) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void animateBase(View aimView, String attribute, int color1, int color2) {
 
         ValueAnimator colorAnim = ObjectAnimator.ofInt(aimView,
-                "backgroundColor", color1, color2);
+                attribute, color1, color2);
         colorAnim.setDuration(250);
         colorAnim.setEvaluator(new ArgbEvaluator());
         colorAnim.setRepeatCount(0);
@@ -187,17 +189,36 @@ public class SettingsActivity extends AppCompatActivity
     private void changeTheme(boolean nightMode) {
 
         if (nightMode) {
-            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.White),
+            animateBase(findViewById(R.id.settings_layout), "backgroundColor",
+                    getResources().getColor(R.color.White),
                     getResources().getColor(R.color.Coal));
 
-            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
-            ((TextView) findViewById(R.id.actonbar_title)).setTextColor(getResources().getColor(R.color.White));
-        } else {
-            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.Coal),
+            animateBase(findViewById(R.id.nmText), "textColor",
+                    getResources().getColor(R.color.Black),
                     getResources().getColor(R.color.White));
 
-            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
-            ((TextView) findViewById(R.id.actonbar_title)).setTextColor(getResources().getColor(R.color.Black));
+            animateBase(findViewById(R.id.actonbar_title), "textColor",
+                    getResources().getColor(R.color.Black),
+                    getResources().getColor(R.color.White));
+
+            /*((ImageView)findViewById(R.id.back_arrow))
+                    .setImageResource(R.drawable.ic_arrow_back_white_24dp);*/
+
+        } else {
+            animateBase(findViewById(R.id.settings_layout), "backgroundColor",
+                    getResources().getColor(R.color.Coal),
+                    getResources().getColor(R.color.White));
+
+            animateBase(findViewById(R.id.actonbar_title), "textColor",
+                    getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Black));
+
+            animateBase(findViewById(R.id.nmText), "textColor",
+                    getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Black));
+
+            /*((ImageView)findViewById(R.id.back_arrow))
+                    .setImageResource(R.drawable.ic_arrow_back_black_24dp);*/
 
         }
     }
