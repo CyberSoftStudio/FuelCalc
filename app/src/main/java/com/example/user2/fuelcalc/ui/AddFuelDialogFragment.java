@@ -12,12 +12,15 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user2.fuelcalc.R;
 
@@ -46,10 +49,9 @@ public class AddFuelDialogFragment extends DialogFragment {
 
         Activity activity;
 
-        if (context instanceof Activity){
+        if (context instanceof Activity) {
             activity = (Activity) context;
-        }
-        else {
+        } else {
             return;
         }
 
@@ -70,8 +72,8 @@ public class AddFuelDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        btnAcceptDisabledColor = getActivity().getResources().getColor(R.color.black);
-        btnAcceptEnabledColor = getActivity().getResources().getColor(R.color.white);
+        btnAcceptDisabledColor = getActivity().getResources().getColor(R.color.gray);
+        btnAcceptEnabledColor = getActivity().getResources().getColor(R.color.black);
 
 
         layout = (LinearLayout) inflater.inflate(R.layout.dialog_add_fuel, null);
@@ -86,7 +88,7 @@ public class AddFuelDialogFragment extends DialogFragment {
         super.onResume();
 
         final Button acceptButton = layout.findViewById(R.id.add_fuel_btn_accept);
-        acceptButton.setBackgroundColor(btnAcceptDisabledColor);
+        acceptButton.setTextColor(btnAcceptDisabledColor);
         acceptButton.setEnabled(false);
 
         nameET = layout.findViewById(R.id.add_fuel_name);
@@ -96,10 +98,12 @@ public class AddFuelDialogFragment extends DialogFragment {
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -110,11 +114,10 @@ public class AddFuelDialogFragment extends DialogFragment {
                 String price = priceET.getText().toString();
 
                 if (fuelName.equals("") || unitName.equals("") || caloricity.equals("") || price.equals("")) {
-                    acceptButton.setBackgroundColor(btnAcceptDisabledColor);
+                    acceptButton.setTextColor(btnAcceptDisabledColor);
                     acceptButton.setEnabled(false);
-                }
-                else {
-                    acceptButton.setBackgroundColor(btnAcceptEnabledColor);
+                } else {
+                    acceptButton.setTextColor(btnAcceptEnabledColor);
                     acceptButton.setEnabled(true);
                 }
             }
