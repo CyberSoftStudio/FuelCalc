@@ -1,83 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:windowSoftInputMode="adjustPan">
+    android:background="@color/WhiteSmoke"
+    android:orientation="vertical"
+    android:theme="@style/SettingsTheme"
+    tools:context="com.example.user2.fuelcalc.ui.SettingsActivity">
 
 
     <LinearLayout
-        android:id="@+id/settings_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/WhiteSmoke"
-        android:orientation="vertical"
-        android:theme="@style/SettingsTheme"
-        tools:context="com.example.user2.fuelcalc.ui.SettingsActivity">
+        android:layout_height="?actionBarSize"
+        android:orientation="horizontal"
+        android:id="@+id/actonbar">
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_margin="16dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I am an action bar, baka"
+            android:textSize="22dp"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="16dp"
+            />
 
-            <TextView
-                android:id="@+id/nmText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.8"
-                android:gravity="center_vertical"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:text="NIGHT MODE"
-                android:textColor="@color/Black"
-                android:textSize="18sp" />
-
-            <Switch
-                android:id="@+id/switcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.2"
-                android:textOff="off"
-                android:textOn="on" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/reset_fuel_btn"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/cute_btn_style"
-            android:gravity="center"
-            android:onClick="onClickResetDefaultBtn"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:text="@string/reset_fuel_list_to_default"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/add_fuel_btn"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/cute_btn_style"
-            android:onClick="onClickAddBtn"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:text="Add fuel"
-            android:textSize="18sp" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="@drawable/actionbar__underline"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/nmText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.8"
+            android:gravity="center_vertical"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="NIGHT MODE"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+
+        <Switch
+            android:id="@+id/switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.2"
+            android:textOff="off"
+            android:textOn="on" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/reset_fuel_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cute_btn_style"
+        android:gravity="center"
+        android:onClick="onClickResetDefaultBtn"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="@string/reset_fuel_list_to_default"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/add_fuel_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cute_btn_style"
+        android:onClick="onClickAddBtn"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="Add fuel"
+        android:textSize="18sp" />
+</LinearLayout>
+

@@ -4,11 +4,13 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,6 +20,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.user2.fuelcalc.R;
 import com.example.user2.fuelcalc.fuels.FuelType;
@@ -44,32 +47,21 @@ public class SettingsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (sharedPreferences.getBoolean("night_mode", false)) {
-            setTheme(R.style.DarkTheme);
+            setTheme(R.style.DarkSettingsTheme);
         } else {
-            setTheme(R.style.LightTheme);
+            setTheme(R.style.LightSettingsTheme);
         }
         setContentView(R.layout.settings_activity);
         this.setTitle("Settings");
-        if (sharedPreferences.getBoolean("night_mode", false)) {
 
-        } else {
-
-        }
         fuelModel = new FuelModelImpl();
         switcher = findViewById(R.id.switcher);
         switcher.setChecked(sharedPreferences.getBoolean("night_mode", false));
         switcher.setOnCheckedChangeListener(this);
 
-        try {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        } catch (NullPointerException e) {
-            Log.e(LOGTAG, e.toString());
-        }
     }
 
     private void animateBase(View aimView,int color1, int color2) {
-
-
 
         ValueAnimator colorAnim = ObjectAnimator.ofInt(aimView,
                 "backgroundColor", color1, color2);
@@ -78,12 +70,6 @@ public class SettingsActivity extends AppCompatActivity
         colorAnim.setRepeatCount(0);
         colorAnim.setRepeatMode(ValueAnimator.REVERSE);
         colorAnim.start();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
 
 
@@ -118,11 +104,11 @@ public class SettingsActivity extends AppCompatActivity
 
 
     @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+    public void onCheckedChanged(CompoundButton compoundButton, boolean nightMode) {
 
         editor = sharedPreferences.edit();
 
-        if (b) {
+        if (nightMode) {
             editor.putBoolean("night_mode", true);
             animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.White),
                     getResources().getColor(R.color.Coal));
@@ -138,6 +124,7 @@ public class SettingsActivity extends AppCompatActivity
         }
 
         editor.apply();
+
     }
 
 
