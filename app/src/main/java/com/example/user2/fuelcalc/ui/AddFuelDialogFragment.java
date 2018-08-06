@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +32,13 @@ public class AddFuelDialogFragment extends DialogFragment {
 
     AddFuelDialogListener mListener;
     LinearLayout layout;
+    EditText nameET;
+    EditText unitET;
+    EditText caloricityET;
+    EditText priceET;
+    int btnAcceptDisabledColor;
+    int btnAcceptEnabledColor;
+
 
     @Override
     public void onAttach(Context context) {
@@ -60,6 +70,8 @@ public class AddFuelDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
+        btnAcceptDisabledColor = getActivity().getResources().getColor(R.color.black);
+        btnAcceptEnabledColor = getActivity().getResources().getColor(R.color.white);
 
 
         layout = (LinearLayout) inflater.inflate(R.layout.dialog_add_fuel, null);
@@ -73,25 +85,60 @@ public class AddFuelDialogFragment extends DialogFragment {
     public void onResume() {
         super.onResume();
 
-        Button acceptButton = layout.findViewById(R.id.add_fuel_btn_accept);
+        final Button acceptButton = layout.findViewById(R.id.add_fuel_btn_accept);
+        acceptButton.setBackgroundColor(btnAcceptDisabledColor);
+        acceptButton.setEnabled(false);
+
+        nameET = layout.findViewById(R.id.add_fuel_name);
+        unitET = layout.findViewById(R.id.add_fuel_unit);
+        caloricityET = layout.findViewById(R.id.add_fuel_caloricity);
+        priceET = layout.findViewById(R.id.add_fuel_price);
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                String fuelName = nameET.getText().toString();
+                String unitName = unitET.getText().toString();
+                String caloricity = caloricityET.getText().toString();
+                String price = priceET.getText().toString();
+
+                if (fuelName.equals("") || unitName.equals("") || caloricity.equals("") || price.equals("")) {
+                    acceptButton.setBackgroundColor(btnAcceptDisabledColor);
+                    acceptButton.setEnabled(false);
+                }
+                else {
+                    acceptButton.setBackgroundColor(btnAcceptEnabledColor);
+                    acceptButton.setEnabled(true);
+                }
+            }
+        };
+
+        nameET.addTextChangedListener(textWatcher);
+        unitET.addTextChangedListener(textWatcher);
+        caloricityET.addTextChangedListener(textWatcher);
+        priceET.addTextChangedListener(textWatcher);
+
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String fuel_name = ((EditText)layout.findViewById(R.id.add_fuel_name))
-                        .getText().toString();
+                String fuelName = nameET.getText().toString();
 
-                String unit_name = ((EditText)layout.findViewById(R.id.add_fuel_unit))
-                        .getText().toString();
+                String unitName = unitET.getText().toString();
 
-                String caloricity =((EditText)layout.findViewById(R.id.add_fuel_caloricity))
-                        .getText().toString();
+                String caloricity = caloricityET.getText().toString();
 
-                String price = ((EditText)layout.findViewById(R.id.add_fuel_price))
-                        .getText().toString();
+                String price = priceET.getText().toString();
 
                 mListener.onAddFuelDialogPositiveClick(AddFuelDialogFragment.this,
-                        fuel_name, unit_name, caloricity, price);
+                        fuelName, unitName, caloricity, price);
 
             }
         });

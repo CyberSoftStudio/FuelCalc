@@ -124,12 +124,6 @@ public class SettingsActivity extends AppCompatActivity
                                              String unitName, String caloricity, String price) {
 
 
-        if (fuelName.equals("") || unitName.equals("") || caloricity.equals("") || price.equals("")) {
-            showToast("All input fields must not be empty");
-            return;
-        }
-
-
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
         for (FuelType curFuelType : fuelTypes) {
             if (curFuelType.getName().equals(fuelName)) {
@@ -141,14 +135,8 @@ public class SettingsActivity extends AppCompatActivity
 
         double priceDouble, caloricityDouble;
 
-        try {
-            priceDouble = Double.parseDouble(price);
-            caloricityDouble = Double.parseDouble(caloricity);
-
-        } catch (NumberFormatException e) {
-            showToast("\"Caloricity\" and \"price\" fields must contain only numbers");
-            return;
-        }
+        priceDouble = Double.parseDouble(price);
+        caloricityDouble = Double.parseDouble(caloricity);
 
 
         fuelModel.addFuel(new FuelType(fuelName, unitName, -1.0, priceDouble, -1.0,
