@@ -24,7 +24,7 @@
         <item name="colorPrimary">#ffffff</item>
         <item name="colorPrimaryDark">#868686</item>
         <item name="colorAccent">#ff7e3d</item>
-        <item name="android:windowAnimationStyle">@style/dialog_animation_fade</item>
+        <item name="android:windowAnimationStyle">@style/activity_animation_fade</item>
         <item name="android:navigationBarColor" tools:ignore="NewApi">#F5F5F5</item>
         <item name="android:navigationBarDividerColor">#000000</item>
         <item name="android:windowLightNavigationBar">true</item>
@@ -37,7 +37,7 @@
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#ff7e3d</item>
-        <item name="android:windowAnimationStyle">@style/dialog_animation_fade</item>
+        <item name="android:windowAnimationStyle">@style/activity_animation_fade</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:actionMenuTextColor">@color/Black</item>
     </style>
@@ -48,4 +48,9 @@
         <item name="android:windowExitAnimation">@anim/fade_out_dialog</item>
     </style>
 
+    <style
+        name="activity_animation_fade" >
+        <item name="android:windowEnterAnimation">@anim/fade_in_activity</item>
+        <item name="android:windowExitAnimation">@anim/fade_out_activity</item>
+    </style>
 </resources>
