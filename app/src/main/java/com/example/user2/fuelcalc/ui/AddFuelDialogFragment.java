@@ -84,6 +84,17 @@ public class AddFuelDialogFragment extends DialogFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if (getDialog() == null) {
+            return;
+        }
+
+        getDialog().getWindow().setWindowAnimations(
+                R.style.dialog_animation_fade);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 

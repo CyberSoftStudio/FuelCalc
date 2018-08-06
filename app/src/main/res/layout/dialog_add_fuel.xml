@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/bggray">
-
+    android:background="@color/bggray"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -17,93 +16,99 @@
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/gaz"/>
+            android:src="@drawable/gaz" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/Black"
-            android:text="Add new fuel"
-            android:textSize="25sp"
             android:gravity="center_vertical"
-            android:paddingLeft="50dp"/>
+            android:paddingLeft="50dp"
+            android:text="Add new fuel"
+            android:textColor="@color/Black"
+            android:textSize="25sp" />
 
     </LinearLayout>
+
     <EditText
         android:id="@+id/add_fuel_name"
-        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:hint="Fuel name" />
+        android:layout_marginTop="16dp"
+        android:hint="Fuel name"
+        android:inputType="text" />
+
     <EditText
         android:id="@+id/add_fuel_unit"
-        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
-        android:hint="Unit name"/>
+        android:hint="Unit name"
+        android:inputType="text" />
+
     <EditText
         android:id="@+id/add_fuel_caloricity"
-        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
-        android:hint="Caloricity"/>
+        android:hint="Caloricity"
+        android:inputType="number" />
+
     <EditText
         android:id="@+id/add_fuel_price"
-        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
-        android:hint="Price per unit"/>
+        android:hint="Price per unit"
+        android:inputType="number" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/Black"
-        android:layout_marginTop="32dp"/>
+        android:layout_marginTop="32dp"
+        android:background="@color/Black" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp">
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/add_fuel_btn_accept"
-            android:text="Accept"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:layout_weight="0.5"
             android:background="@null"
-            android:layout_marginBottom="2dp"/>
+            android:text="Accept" />
 
         <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:background="@color/Black"/>
+            android:background="@color/Black" />
 
         <Button
+            android:focusable="true"
+            android:clickable="true"
             android:id="@+id/add_fuel_btn_cancel"
-            android:text="Cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:layout_weight="0.5"
             android:background="@null"
-            android:layout_marginBottom="2dp"/>
+            android:text="Cancel" />
 
     </LinearLayout>
 

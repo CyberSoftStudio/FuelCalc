@@ -1,5 +1,8 @@
 package com.example.user2.fuelcalc.ui;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -9,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -44,12 +48,13 @@ public class SettingsActivity extends AppCompatActivity
             setTheme(R.style.LightTheme);
         }
         setContentView(R.layout.settings_activity);
+        this.setTitle("Settings");
         if (sharedPreferences.getBoolean("night_mode", false)) {
             findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.Coal));
-            ((TextView)findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
+            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
         } else {
             findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.White));
-            ((TextView)findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
+            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
         }
         fuelModel = new FuelModelImpl();
         switcher = findViewById(R.id.switcher);
@@ -65,7 +70,7 @@ public class SettingsActivity extends AppCompatActivity
 
 
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
@@ -89,7 +94,6 @@ public class SettingsActivity extends AppCompatActivity
 
 
     public void onClickAddBtn(View v) {
-
         DialogFragment dialog = new AddFuelDialogFragment();
         dialog.show(getSupportFragmentManager(), "AddFuelDialogFragment");
     }
@@ -124,6 +128,12 @@ public class SettingsActivity extends AppCompatActivity
                                              String unitName, String caloricity, String price) {
 
 
+        if (fuelName.equals("") || unitName.equals("") || caloricity.equals("") || price.equals("")) {
+            showToast("All input fields must not be empty");
+            return;
+        }
+
+
         List<FuelType> fuelTypes = fuelModel.getFuelTypes();
         for (FuelType curFuelType : fuelTypes) {
             if (curFuelType.getName().equals(fuelName)) {
@@ -135,8 +145,14 @@ public class SettingsActivity extends AppCompatActivity
 
         double priceDouble, caloricityDouble;
 
-        priceDouble = Double.parseDouble(price);
-        caloricityDouble = Double.parseDouble(caloricity);
+        try {
+            priceDouble = Double.parseDouble(price);
+            caloricityDouble = Double.parseDouble(caloricity);
+
+        } catch (NumberFormatException e) {
+            showToast("\"Caloricity\" and \"price\" fields must contain only numbers");
+            return;
+        }
 
 
         fuelModel.addFuel(new FuelType(fuelName, unitName, -1.0, priceDouble, -1.0,
