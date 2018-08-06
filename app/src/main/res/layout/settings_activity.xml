@@ -23,15 +23,18 @@
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_arrow_back_black_24dp"
-            android:layout_margin="16dp"/>
+            android:layout_margin="16dp"
+            android:id="@+id/actonbar_icon"
+            android:onClick="onBackButtonClick"/>
 
         <TextView
+            android:id="@+id/actonbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I am an action bar, baka"
+            android:text="Settings"
             android:textSize="22dp"
             android:layout_gravity="center_vertical"
-            android:paddingStart="16dp"
+            android:paddingStart="8dp"
             />
 
     </LinearLayout>

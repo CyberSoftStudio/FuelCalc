@@ -46,11 +46,11 @@ public class SettingsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
         if (sharedPreferences.getBoolean("night_mode", false)) {
-            setTheme(R.style.DarkSettingsTheme);
         } else {
-            setTheme(R.style.LightSettingsTheme);
         }
+
         setContentView(R.layout.settings_activity);
         this.setTitle("Settings");
 
@@ -61,7 +61,7 @@ public class SettingsActivity extends AppCompatActivity
 
     }
 
-    private void animateBase(View aimView,int color1, int color2) {
+    private void animateBase(View aimView, int color1, int color2) {
 
         ValueAnimator colorAnim = ObjectAnimator.ofInt(aimView,
                 "backgroundColor", color1, color2);
@@ -110,18 +110,11 @@ public class SettingsActivity extends AppCompatActivity
 
         if (nightMode) {
             editor.putBoolean("night_mode", true);
-            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.White),
-                    getResources().getColor(R.color.Coal));
-
-            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
         } else {
             editor.putBoolean("night_mode", false);
-            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.Coal),
-                    getResources().getColor(R.color.White));
-
-            findViewById(R.id.settings_layout).setBackgroundColor(getResources().getColor(R.color.White));
-            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
         }
+
+        changeTheme(nightMode);
 
         editor.apply();
 
@@ -188,5 +181,29 @@ public class SettingsActivity extends AppCompatActivity
     @Override
     public void onConfirmResetDialogNegativeClick(DialogFragment dialog) {
         dialog.getDialog().cancel();
+    }
+
+
+    private void changeTheme(boolean nightMode) {
+
+        if (nightMode) {
+            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Coal));
+
+            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.White));
+            ((TextView) findViewById(R.id.actonbar_title)).setTextColor(getResources().getColor(R.color.White));
+        } else {
+            animateBase(findViewById(R.id.settings_layout), getResources().getColor(R.color.Coal),
+                    getResources().getColor(R.color.White));
+
+            ((TextView) findViewById(R.id.nmText)).setTextColor(getResources().getColor(R.color.Black));
+            ((TextView) findViewById(R.id.actonbar_title)).setTextColor(getResources().getColor(R.color.Black));
+
+        }
+    }
+
+
+    public void onBackButtonClick(View v) {
+        finish();
     }
 }
