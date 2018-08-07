@@ -279,6 +279,11 @@ animateBase(findViewById(R.id.reset_fuel_btn), "textColor",
         }
     }
 
+    public void onClickSwitch(View view){
+        boolean isSwitchEn = false;
+        Switch mySwitch = findViewById(R.id.switcher);
+        mySwitch.setChecked(!mySwitch.isChecked());
+    }
 
     public void onBackButtonClick(View v) {
         finish();
