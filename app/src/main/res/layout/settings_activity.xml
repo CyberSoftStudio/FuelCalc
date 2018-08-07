@@ -120,74 +120,35 @@
         android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/reset_fuel_btn"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:drawableLeft="@drawable/ic_baseline_help_24px"
-        />
-
-
-    <LinearLayout
-        android:id="@+id/reset_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+
         android:clickable="true"
+        android:paddingStart="28dp"
+        android:drawableStart="@drawable/ic_baseline_loop_24px"
+        android:text="@string/reset_fuel_list_to_default"
+        android:textSize="@dimen/textButtonSize"
+        android:drawablePadding="12dp"
+        tools:ignore="RtlSymmetry"
         android:onClick="onClickResetDefaultBtn"
-        android:orientation="horizontal"
-        android:focusable="true">
+        android:focusable="true" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/ic_baseline_loop_24px"
-            android:contentDescription="@string/reset" />
-
-        <TextView
-            android:id="@+id/reset_fuel_btn"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:paddingEnd="10dp"
-            android:paddingStart="20dp"
-            android:text="@string/reset_fuel_list_to_default"
-            android:textAllCaps="false"
-            android:textSize="@dimen/textButtonSize" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/add_fuel_layout"
+    <TextView
+        android:id="@+id/add_fuel_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:clickable="true"
+        android:paddingStart="30dp"
+        android:drawableStart="@drawable/ic_baseline_add_circle_24px"
+        android:text="@string/add_fuel"
+        android:textSize="@dimen/textButtonSize"
+        android:drawablePadding="12dp"
+        tools:ignore="RtlSymmetry"
         android:onClick="onClickAddBtn"
-        android:orientation="horizontal"
-        android:focusable="true">
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/ic_baseline_add_circle_24px"
-            android:contentDescription="@string/add" />
-
-        <TextView
-            android:id="@+id/add_fuel_btn"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="@string/add_fuel"
-            android:textAllCaps="false"
-            android:textSize="@dimen/textButtonSize"
-            tools:ignore="RtlSymmetry" />
-    </LinearLayout>
+        android:focusable="true" />
 
 
     <include
