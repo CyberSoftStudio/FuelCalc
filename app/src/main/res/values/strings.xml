@@ -11,4 +11,5 @@
     <string name="info">Info</string>
     <string name="fuel_list_settings">Fuel-list settings</string>
     <string name="switch_theme">Switch theme</string>
+    <string name="dalog_reset_title">Are you sure?</string>
 </resources>

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -23,6 +24,7 @@ public class ConfirmResetDialogFragment extends DialogFragment {
     }
 
     ConfirmResetDialogListener mListener;
+    LinearLayout layout;
 
     @Override
     public void onAttach(Context context) {
@@ -30,10 +32,9 @@ public class ConfirmResetDialogFragment extends DialogFragment {
 
         Activity activity;
 
-        if (context instanceof Activity){
+        if (context instanceof Activity) {
             activity = (Activity) context;
-        }
-        else {
+        } else {
             return;
         }
 
@@ -51,23 +52,38 @@ public class ConfirmResetDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder.setTitle("Are you sure?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        layout = (LinearLayout) inflater.inflate(R.layout.dialog_reset_fuels, null);
+
+        builder.setView(layout);
+
+        return builder.create();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        layout.findViewById(R.id.dialog_reset_yes_btn)
+                .setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int id) {
+                    public void onClick(View v) {
 
                         mListener.onConfirmResetDialogPositiveClick(ConfirmResetDialogFragment.this);
                     }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+                });
+
+
+        layout.findViewById(R.id.dialog_reset_no_btn)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
                         mListener.onConfirmResetDialogNegativeClick(ConfirmResetDialogFragment.this);
                     }
                 });
-
-        return builder.create();
     }
 }
