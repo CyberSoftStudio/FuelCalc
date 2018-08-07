@@ -230,7 +230,8 @@
             android:text="@string/help"
             android:textAllCaps="false"
             android:textSize="@dimen/textButtonSize"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:onClick="onHelpButtonClick"/>
     </LinearLayout>
 
     <LinearLayout
@@ -258,7 +259,8 @@
             android:text="@string/about_us"
             android:textAllCaps="false"
             android:textSize="@dimen/textButtonSize"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:onClick="onAboutUsButtonClick"/>
     </LinearLayout>
 
 

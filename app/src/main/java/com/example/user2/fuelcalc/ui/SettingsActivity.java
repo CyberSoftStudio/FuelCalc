@@ -290,6 +290,7 @@ public class SettingsActivity extends AppCompatActivity
     }
 
 
+
     public void onHelpButtonClick(View v) {
 
     }
