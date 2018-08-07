@@ -99,6 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.2"
+            android:layout_marginEnd="30dp"
             android:textOff="@string/off"
             android:textOn="@string/on" />
     </LinearLayout>
@@ -124,13 +125,12 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-
         android:clickable="true"
         android:paddingStart="28dp"
         android:drawableStart="@drawable/ic_baseline_loop_24px"
         android:text="@string/reset_fuel_list_to_default"
         android:textSize="@dimen/textButtonSize"
-        android:drawablePadding="12dp"
+        android:drawablePadding="20dp"
         tools:ignore="RtlSymmetry"
         android:onClick="onClickResetDefaultBtn"
         android:focusable="true" />
@@ -145,7 +145,7 @@
         android:drawableStart="@drawable/ic_baseline_add_circle_24px"
         android:text="@string/add_fuel"
         android:textSize="@dimen/textButtonSize"
-        android:drawablePadding="12dp"
+        android:drawablePadding="20dp"
         tools:ignore="RtlSymmetry"
         android:onClick="onClickAddBtn"
         android:focusable="true" />
@@ -166,63 +166,35 @@
         android:textColor="@color/Gray"
         android:textSize="14sp" />
 
-    <LinearLayout
-        android:id="@+id/help_layout"
+    <TextView
+        android:id="@+id/help_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:clickable="true"
+        android:paddingStart="30dp"
+        android:drawableStart="@drawable/ic_baseline_help_24px"
+        android:text="@string/help"
+        android:textSize="@dimen/textButtonSize"
+        android:drawablePadding="20dp"
+        tools:ignore="RtlSymmetry"
+        android:onClick="onClickAddBtn"
+        android:focusable="true" />
 
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/ic_baseline_help_24px"
-            android:contentDescription="@string/help" />
-
-        <TextView
-            android:id="@+id/help_button"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="@string/help"
-            android:textAllCaps="false"
-            android:textSize="@dimen/textButtonSize"
-            tools:ignore="RtlSymmetry"
-            android:onClick="onHelpButtonClick"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/about_layout"
+    <TextView
+        android:id="@+id/about_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/ic_baseline_info_24px"
-            android:contentDescription="@string/about" />
-
-        <TextView
-            android:id="@+id/about_button"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="@string/about_us"
-            android:textAllCaps="false"
-            android:textSize="@dimen/textButtonSize"
-            tools:ignore="RtlSymmetry"
-            android:onClick="onAboutUsButtonClick"/>
-    </LinearLayout>
+        android:clickable="true"
+        android:paddingStart="30dp"
+        android:drawableStart="@drawable/ic_baseline_info_24px"
+        android:text="@string/about_us"
+        android:textSize="@dimen/textButtonSize"
+        android:drawablePadding="20dp"
+        tools:ignore="RtlSymmetry"
+        android:onClick="onClickAddBtn"
+        android:focusable="true" />
 
 
 </LinearLayout>
