@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -253,9 +256,14 @@ public class SettingsActivity extends AppCompatActivity
 
     public void onHelpButtonClick(View v) {
         animateClick(v);
+
+        DialogFragment dialog = new HelpDialogFragment();
+        dialog.show(getSupportFragmentManager(), "HelpDialogFragment");
     }
 
     public void onAboutUsButtonClick(View v) {
         animateClick(v);
+        DialogFragment dialog = new AboutUsDialogFragment();
+        dialog.show(getSupportFragmentManager(), "aboutUsDialogFragment");
     }
 }

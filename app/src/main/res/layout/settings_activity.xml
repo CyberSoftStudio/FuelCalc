@@ -25,9 +25,9 @@
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
+            android:contentDescription="@string/back"
             android:onClick="onBackButtonClick"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:contentDescription="@string/back" />
+            android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <TextView
             android:id="@+id/actonbar_title"
@@ -62,9 +62,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:paddingStart="30dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
+        android:paddingStart="30dp"
         tools:ignore="RtlSymmetry">
 
         <ImageView
@@ -72,10 +72,10 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:clickable="true"
+            android:contentDescription="@string/nightmode"
             android:focusable="true"
             android:onClick="onClickSwitch"
-            android:src="@drawable/ic_baseline_brightness_4_24px"
-            android:contentDescription="@string/nightmode" />
+            android:src="@drawable/ic_baseline_brightness_4_24px" />
 
         <TextView
             android:id="@+id/nmText"
@@ -98,8 +98,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.2"
             android:layout_marginEnd="30dp"
+            android:layout_weight="0.2"
             android:textOff="@string/off"
             android:textOn="@string/on" />
     </LinearLayout>
@@ -126,14 +126,14 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:clickable="true"
-        android:paddingStart="28dp"
+        android:drawablePadding="20dp"
         android:drawableStart="@drawable/ic_baseline_loop_24px"
+        android:focusable="true"
+        android:onClick="onClickResetDefaultBtn"
+        android:paddingStart="28dp"
         android:text="@string/reset_fuel_list_to_default"
         android:textSize="@dimen/textButtonSize"
-        android:drawablePadding="20dp"
-        tools:ignore="RtlSymmetry"
-        android:onClick="onClickResetDefaultBtn"
-        android:focusable="true" />
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/add_fuel_btn"
@@ -141,14 +141,14 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:clickable="true"
-        android:paddingStart="30dp"
+        android:drawablePadding="20dp"
         android:drawableStart="@drawable/ic_baseline_add_circle_24px"
+        android:focusable="true"
+        android:onClick="onClickAddBtn"
+        android:paddingStart="30dp"
         android:text="@string/add_fuel"
         android:textSize="@dimen/textButtonSize"
-        android:drawablePadding="20dp"
-        tools:ignore="RtlSymmetry"
-        android:onClick="onClickAddBtn"
-        android:focusable="true" />
+        tools:ignore="RtlSymmetry" />
 
 
     <include
@@ -172,14 +172,14 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:clickable="true"
-        android:paddingStart="30dp"
+        android:drawablePadding="20dp"
         android:drawableStart="@drawable/ic_baseline_help_24px"
+        android:focusable="true"
+        android:onClick="onHelpButtonClick"
+        android:paddingStart="30dp"
         android:text="@string/help"
         android:textSize="@dimen/textButtonSize"
-        android:drawablePadding="20dp"
-        tools:ignore="RtlSymmetry"
-        android:onClick="onHelpButtonClick"
-        android:focusable="true" />
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/about_button"
@@ -187,15 +187,14 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:clickable="true"
-        android:paddingStart="30dp"
+        android:drawablePadding="20dp"
         android:drawableStart="@drawable/ic_baseline_info_24px"
+        android:focusable="true"
+        android:onClick="onAboutUsButtonClick"
+        android:paddingStart="30dp"
         android:text="@string/about_us"
         android:textSize="@dimen/textButtonSize"
-        android:drawablePadding="20dp"
-        tools:ignore="RtlSymmetry"
-        android:onClick="onAboutUsButtonClick"
-        android:focusable="true" />
+        tools:ignore="RtlSymmetry" />
 
 
 </LinearLayout>
-

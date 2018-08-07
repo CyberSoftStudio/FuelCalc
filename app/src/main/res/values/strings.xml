@@ -18,4 +18,9 @@
     <string name="add">ADD</string>
     <string name="about">ABOUT</string>
     <string name="nightmode">NIGHTMODE</string>
+    <string name="help_text">Help\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp
+        \nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\n</string>
+    <string name="close_window">Close</string>
+    <string name="help_title">Help</string>
+    <string name="about_us_title">About us</string>
 </resources>
