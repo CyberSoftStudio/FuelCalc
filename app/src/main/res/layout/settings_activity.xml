@@ -16,7 +16,8 @@
         android:id="@+id/actonbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/actonbar_icon"
@@ -25,7 +26,8 @@
             android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
             android:onClick="onBackButtonClick"
-            android:src="@drawable/ic_arrow_back_black_24dp" />
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:contentDescription="@string/back" />
 
         <TextView
             android:id="@+id/actonbar_title"
@@ -34,7 +36,8 @@
             android:layout_gravity="center_vertical"
             android:paddingStart="8dp"
             android:text="@string/settings"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="RtlSymmetry" />
 
     </LinearLayout>
 
@@ -48,21 +51,22 @@
         android:id="@+id/notebarText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
-        android:gravity="left"
+        android:gravity="start"
         android:text="@string/switch_theme"
         android:textColor="@color/Gray"
         android:textSize="14sp" />
 
     <LinearLayout
+        android:id="@+id/nm_layout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="30dp"
+        android:paddingStart="30dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="RtlSymmetry">
 
         <ImageView
             android:layout_width="30dp"
@@ -71,7 +75,8 @@
             android:clickable="true"
             android:focusable="true"
             android:onClick="onClickSwitch"
-            android:src="@drawable/ic_baseline_brightness_4_24px" />
+            android:src="@drawable/ic_baseline_brightness_4_24px"
+            android:contentDescription="@string/nightmode" />
 
         <TextView
             android:id="@+id/nmText"
@@ -95,8 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.2"
-            android:textOff="off"
-            android:textOn="on" />
+            android:textOff="@string/off"
+            android:textOn="@string/on" />
     </LinearLayout>
 
 
@@ -108,9 +113,9 @@
         android:id="@+id/notebarText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:layout_marginStart="30dp"
-        android:gravity="left"
+        android:gravity="start"
         android:text="@string/fuel_list_settings"
         android:textColor="@color/Gray"
         android:textSize="14sp" />
@@ -127,7 +132,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
             android:onClick="onClickResetDefaultBtn"
-            android:src="@drawable/ic_baseline_loop_24px" />
+            android:src="@drawable/ic_baseline_loop_24px"
+            android:contentDescription="@string/reset" />
 
         <Button
             android:id="@+id/reset_fuel_btn"
@@ -157,7 +163,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
             android:onClick="onClickAddBtn"
-            android:src="@drawable/ic_baseline_add_circle_24px" />
+            android:src="@drawable/ic_baseline_add_circle_24px"
+            android:contentDescription="@string/add" />
 
         <Button
             android:id="@+id/add_fuel_btn"
@@ -169,7 +176,8 @@
             android:paddingStart="20dp"
             android:text="@string/add_fuel"
             android:textAllCaps="false"
-            android:textSize="@dimen/textButtonSize" />
+            android:textSize="@dimen/textButtonSize"
+            tools:ignore="RtlSymmetry" />
     </LinearLayout>
 
 
@@ -181,9 +189,9 @@
         android:id="@+id/notebarText3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:layout_marginStart="30dp"
-        android:gravity="left"
+        android:gravity="start"
         android:text="@string/info"
         android:textColor="@color/Gray"
         android:textSize="14sp" />
@@ -199,7 +207,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
-            android:src="@drawable/ic_baseline_help_24px" />
+            android:src="@drawable/ic_baseline_help_24px"
+            android:contentDescription="@string/help" />
 
         <Button
             android:id="@+id/help_button"
@@ -210,7 +219,8 @@
             android:paddingStart="20dp"
             android:text="@string/help"
             android:textAllCaps="false"
-            android:textSize="@dimen/textButtonSize" />
+            android:textSize="@dimen/textButtonSize"
+            tools:ignore="RtlSymmetry" />
     </LinearLayout>
 
     <LinearLayout
@@ -224,7 +234,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
-            android:src="@drawable/ic_baseline_info_24px" />
+            android:src="@drawable/ic_baseline_info_24px"
+            android:contentDescription="@string/about" />
 
         <Button
             android:id="@+id/about_button"
@@ -235,7 +246,8 @@
             android:paddingStart="20dp"
             android:text="@string/about_us"
             android:textAllCaps="false"
-            android:textSize="@dimen/textButtonSize" />
+            android:textSize="@dimen/textButtonSize"
+            tools:ignore="RtlSymmetry" />
     </LinearLayout>
 
 

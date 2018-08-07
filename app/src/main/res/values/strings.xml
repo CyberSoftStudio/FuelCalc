@@ -12,4 +12,10 @@
     <string name="fuel_list_settings">Fuel-list settings</string>
     <string name="switch_theme">Switch theme</string>
     <string name="dalog_reset_title">Are you sure?</string>
+    <string name="off">off</string>
+    <string name="on">on</string>
+    <string name="reset">RESET</string>
+    <string name="add">ADD</string>
+    <string name="about">ABOUT</string>
+    <string name="nightmode">NIGHTMODE</string>
 </resources>
