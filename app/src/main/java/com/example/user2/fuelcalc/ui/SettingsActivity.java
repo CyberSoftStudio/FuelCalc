@@ -220,8 +220,21 @@ public class SettingsActivity extends AppCompatActivity
                     getResources().getColor(R.color.Black),
                     getResources().getColor(R.color.White));
 
+animateBase(findViewById(R.id.reset_fuel_btn), "textColor",
+                    getResources().getColor(R.color.Black),
+                    getResources().getColor(R.color.White));
 
-            ((ImageView)findViewById(R.id.actonbar_icon))
+            animateBase(findViewById(R.id.add_fuel_btn), "textColor",
+                    getResources().getColor(R.color.Black),
+                    getResources().getColor(R.color.White));
+
+            animateBase(findViewById(R.id.help_button), "textColor",
+                    getResources().getColor(R.color.Black),
+                    getResources().getColor(R.color.White));
+
+            animateBase(findViewById(R.id.about_button), "textColor",
+                    getResources().getColor(R.color.Black),
+                    getResources().getColor(R.color.White));            ((ImageView) findViewById(R.id.actonbar_icon))
                     .setImageResource(R.drawable.ic_arrow_back_white_24dp);
 
             arrowBackAlphaAnimator.start();
@@ -232,6 +245,22 @@ public class SettingsActivity extends AppCompatActivity
                     getResources().getColor(R.color.White));
 
             animateBase(findViewById(R.id.actonbar_title), "textColor",
+                    getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Black));
+
+            animateBase(findViewById(R.id.reset_fuel_btn), "textColor",
+                    getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Black));
+
+            animateBase(findViewById(R.id.add_fuel_btn), "textColor",
+                    getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Black));
+
+            animateBase(findViewById(R.id.help_button), "textColor",
+                    getResources().getColor(R.color.White),
+                    getResources().getColor(R.color.Black));
+
+            animateBase(findViewById(R.id.about_button), "textColor",
                     getResources().getColor(R.color.White),
                     getResources().getColor(R.color.Black));
 

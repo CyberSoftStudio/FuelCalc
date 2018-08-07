@@ -6,4 +6,9 @@
     <string name="about_us">About us</string>
     <string name="help">Help</string>
     <string name="reset_fuel_list_to_default">Reset fuel list to default</string>
+    <string name="add_fuel">Add fuel</string>
+    <string name="night_mode">Night mode</string>
+    <string name="info">Info</string>
+    <string name="fuel_list_settings">Fuel-list settings</string>
+    <string name="switch_theme">Switch theme</string>
 </resources>
