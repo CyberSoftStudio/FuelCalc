@@ -3,7 +3,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginBottom="30dp"
     android:layout_marginTop="30dp"
     android:background="@color/bggray"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="0.1">
+        android:layout_margin="8dp">
 
 
         <ImageView
@@ -42,6 +42,7 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="4dp"
         android:layout_weight="0.8">
 
         <TextView
@@ -58,10 +59,11 @@
     <Button
         android:id="@+id/about_us_dialog_close_btn"
         android:layout_width="wrap_content"
+        android:layout_gravity="right"
         android:layout_height="0dp"
-        android:layout_gravity="end"
         android:layout_marginEnd="16dp"
-        android:layout_weight="0.1"
+        android:layout_marginBottom="2dp"
+        android:layout_weight="0.2"
         android:background="@null"
         android:text="@string/close_window"
         android:textColor="@color/Black"

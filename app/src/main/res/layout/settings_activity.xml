@@ -24,7 +24,7 @@
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
-            android:layout_margin="16dp"
+            android:padding="16dp"
             android:contentDescription="@string/back"
             android:onClick="onBackButtonClick"
             android:src="@drawable/ic_arrow_back_black_24dp" />
