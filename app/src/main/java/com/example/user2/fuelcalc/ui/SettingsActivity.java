@@ -220,7 +220,7 @@ public class SettingsActivity extends AppCompatActivity
                     getResources().getColor(R.color.Black),
                     getResources().getColor(R.color.White));
 
-animateBase(findViewById(R.id.reset_fuel_btn), "textColor",
+            animateBase(findViewById(R.id.reset_fuel_btn), "textColor",
                     getResources().getColor(R.color.Black),
                     getResources().getColor(R.color.White));
 
@@ -234,7 +234,8 @@ animateBase(findViewById(R.id.reset_fuel_btn), "textColor",
 
             animateBase(findViewById(R.id.about_button), "textColor",
                     getResources().getColor(R.color.Black),
-                    getResources().getColor(R.color.White));            ((ImageView) findViewById(R.id.actonbar_icon))
+                    getResources().getColor(R.color.White));
+            ((ImageView) findViewById(R.id.actonbar_icon))
                     .setImageResource(R.drawable.ic_arrow_back_white_24dp);
 
             arrowBackAlphaAnimator.start();
@@ -279,13 +280,21 @@ animateBase(findViewById(R.id.reset_fuel_btn), "textColor",
         }
     }
 
-    public void onClickSwitch(View view){
-        boolean isSwitchEn = false;
+    public void onClickSwitch(View view) {
         Switch mySwitch = findViewById(R.id.switcher);
         mySwitch.setChecked(!mySwitch.isChecked());
     }
 
     public void onBackButtonClick(View v) {
         finish();
+    }
+
+
+    public void onHelpButtonClick(View v) {
+
+    }
+
+    public void onAboutUsButtonClick(View v) {
+
     }
 }
