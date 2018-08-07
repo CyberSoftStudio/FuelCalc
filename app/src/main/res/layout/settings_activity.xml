@@ -178,7 +178,7 @@
         android:textSize="@dimen/textButtonSize"
         android:drawablePadding="20dp"
         tools:ignore="RtlSymmetry"
-        android:onClick="onClickAddBtn"
+        android:onClick="onHelpButtonClick"
         android:focusable="true" />
 
     <TextView
@@ -193,7 +193,7 @@
         android:textSize="@dimen/textButtonSize"
         android:drawablePadding="20dp"
         tools:ignore="RtlSymmetry"
-        android:onClick="onClickAddBtn"
+        android:onClick="onAboutUsButtonClick"
         android:focusable="true" />
 
 
