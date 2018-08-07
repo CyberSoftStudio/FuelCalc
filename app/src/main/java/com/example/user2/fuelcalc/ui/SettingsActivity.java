@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         setContentView(R.layout.settings_activity);
-        changeTheme (sharedPreferences.getBoolean("night_mode", false));
+        changeTheme(sharedPreferences.getBoolean("night_mode", false));
 
         fuelModel = new FuelModelImpl();
         switcher = findViewById(R.id.switcher);
@@ -201,8 +201,8 @@ public class SettingsActivity extends AppCompatActivity
                     getResources().getColor(R.color.Black),
                     getResources().getColor(R.color.White));
 
-            /*((ImageView)findViewById(R.id.back_arrow))
-                    .setImageResource(R.drawable.ic_arrow_back_white_24dp);*/
+            ((ImageView) findViewById(R.id.actonbar_icon))
+                    .setImageResource(R.drawable.ic_arrow_back_white_24dp);
 
         } else {
             animateBase(findViewById(R.id.settings_layout), "backgroundColor",
@@ -217,9 +217,8 @@ public class SettingsActivity extends AppCompatActivity
                     getResources().getColor(R.color.White),
                     getResources().getColor(R.color.Black));
 
-            /*((ImageView)findViewById(R.id.back_arrow))
-                    .setImageResource(R.drawable.ic_arrow_back_black_24dp);*/
-
+            ((ImageView) findViewById(R.id.actonbar_icon))
+                    .setImageResource(R.drawable.ic_arrow_back_black_24dp);
         }
     }
 
