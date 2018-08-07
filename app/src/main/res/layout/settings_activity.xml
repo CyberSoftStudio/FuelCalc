@@ -43,27 +43,23 @@
         android:layout_height="0.7dp"
         android:background="@drawable/actionbar__underline" />
 
-    <include
-        android:id="@+id/notebar"
-        layout="@layout/notebar" />
 
     <TextView
         android:id="@+id/notebarText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:paddingLeft="80dp"
         android:text="@string/switch_theme"
         android:textColor="@color/Gray"
-        android:textSize="14sp"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:paddingRight="34dp"
-        />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -96,21 +92,22 @@
             android:textOn="on" />
     </LinearLayout>
 
+
+
+
     <include
         android:id="@+id/notebar"
         layout="@layout/notebar" />
-
     <TextView
         android:id="@+id/notebarText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:paddingLeft="80dp"
         android:text="@string/fuel_list_settings"
         android:textColor="@color/Gray"
-        android:textSize="14sp"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:paddingRight="34dp"
-        />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,7 +119,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="42dp"
+            android:layout_marginStart="30dp"
             android:onClick="onClickResetDefaultBtn"
             android:src="@drawable/ic_baseline_loop_24px" />
 
@@ -140,6 +137,7 @@
             android:textSize="@dimen/textButtonSize" />
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -150,7 +148,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="42dp"
+            android:layout_marginStart="30dp"
             android:onClick="onClickAddBtn"
             android:src="@drawable/ic_baseline_add_circle_24px" />
 
@@ -167,21 +165,22 @@
             android:textSize="@dimen/textButtonSize" />
     </LinearLayout>
 
+
+
+
     <include
         android:id="@+id/notebar"
         layout="@layout/notebar" />
-
     <TextView
         android:id="@+id/notebarText3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="left"
+        android:paddingLeft="80dp"
         android:text="@string/info"
         android:textColor="@color/Gray"
-        android:textSize="14sp"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:paddingRight="34dp"
-        />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -193,7 +192,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="42dp"
+            android:layout_marginStart="30dp"
             android:src="@drawable/ic_baseline_help_24px" />
 
         <Button
@@ -218,7 +217,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="42dp"
+            android:layout_marginStart="30dp"
             android:src="@drawable/ic_baseline_info_24px" />
 
         <Button
@@ -232,5 +231,8 @@
             android:textAllCaps="false"
             android:textSize="@dimen/textButtonSize" />
     </LinearLayout>
+
+
+
 </LinearLayout>
 
