@@ -288,4 +288,5 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="bggray">#e7e7e7</color>
+    <color name="hint_text_olor">#b4b4b4</color>
 </resources>

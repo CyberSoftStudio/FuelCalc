@@ -37,6 +37,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:hint="Fuel name"
+        android:textColorHint="@color/hint_text_olor"
+        android:textColor="@color/Black"
         android:inputType="text" />
 
     <EditText
@@ -47,6 +49,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
+        android:textColorHint="@color/hint_text_olor"
+        android:textColor="@color/Black"
         android:hint="Unit name"
         android:inputType="text" />
 
@@ -58,6 +62,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
+        android:textColorHint="@color/hint_text_olor"
+        android:textColor="@color/Black"
         android:hint="Caloricity"
         android:inputType="number" />
 
@@ -69,6 +75,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
+        android:textColor="@color/Black"
+        android:textColorHint="@color/hint_text_olor"
         android:hint="Price per unit"
         android:inputType="number" />
 

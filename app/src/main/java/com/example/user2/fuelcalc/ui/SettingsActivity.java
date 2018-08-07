@@ -4,6 +4,7 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -42,6 +45,7 @@ public class SettingsActivity extends AppCompatActivity
     Switch switcher;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    ValueAnimator arrowBackAlphaAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,27 @@ public class SettingsActivity extends AppCompatActivity
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         setContentView(R.layout.settings_activity);
-        changeTheme(sharedPreferences.getBoolean("night_mode", false));
 
         fuelModel = new FuelModelImpl();
         switcher = findViewById(R.id.switcher);
         switcher.setChecked(sharedPreferences.getBoolean("night_mode", false));
         switcher.setOnCheckedChangeListener(this);
+
+
+        arrowBackAlphaAnimator = ValueAnimator.ofFloat(0f, 1f);
+        arrowBackAlphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                findViewById(R.id.actonbar_icon).setAlpha((Float) animation.getAnimatedValue());
+            }
+        });
+
+        arrowBackAlphaAnimator.setDuration(250);
+        arrowBackAlphaAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        arrowBackAlphaAnimator.setRepeatCount(0);
+
+
+        changeTheme(sharedPreferences.getBoolean("night_mode", false));
 
     }
 
@@ -201,8 +220,11 @@ public class SettingsActivity extends AppCompatActivity
                     getResources().getColor(R.color.Black),
                     getResources().getColor(R.color.White));
 
-            ((ImageView) findViewById(R.id.actonbar_icon))
+
+            ((ImageView)findViewById(R.id.actonbar_icon))
                     .setImageResource(R.drawable.ic_arrow_back_white_24dp);
+
+            arrowBackAlphaAnimator.start();
 
         } else {
             animateBase(findViewById(R.id.settings_layout), "backgroundColor",
@@ -219,6 +241,12 @@ public class SettingsActivity extends AppCompatActivity
 
             ((ImageView) findViewById(R.id.actonbar_icon))
                     .setImageResource(R.drawable.ic_arrow_back_black_24dp);
+
+
+            ((ImageView) findViewById(R.id.actonbar_icon))
+                    .setImageResource(R.drawable.ic_arrow_back_black_24dp);
+
+            arrowBackAlphaAnimator.start();
         }
     }
 
