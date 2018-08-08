@@ -18,8 +18,13 @@
     <string name="add">ADD</string>
     <string name="about">ABOUT</string>
     <string name="nightmode">NIGHTMODE</string>
-    <string name="help_text">Help\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp
-        \nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\nHelp\n</string>
+    <string name="help_text">How to use the application\n\nTouch a fuel name in list of fuels to
+        make it base and input the volume/mass into the text field on the top of the screen. For
+        each fuel application will automatically count amount you should take to get the same amount
+        of energy.\n\nTap arrow on the right of each fuel in the list to see more information about
+        it. Use "delete" button to remove fuel from the list.\n\nYou can add new fuel by pressing
+        "add fuel" button.\n\n!!Warning!!\n\nPressing "Reset fuel list to default" button will delete
+        all fuel types You added and fill the list with default fuel types.</string>
     <string name="close_window">Close</string>
     <string name="help_title">Help</string>
     <string name="about_us_title">About us</string>
