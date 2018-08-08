@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
@@ -36,7 +35,6 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
     private int lastExpandedPosition = -1;
     private static final int additionalInfoHeightDp = 85;
     private boolean playExpantionAnimation = false;
-    boolean onFirstLaunch = true;
 
     public void setBasePosition(int basePosition) {
         this.basePosition = basePosition;
@@ -74,8 +72,13 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         holder.fuelNameTextView.setText(items.get(position).getName());
         holder.fuelVolTextView.setText(items.get(position).getResVolume().toString());
         holder.fuelUnitTextView.setText(items.get(position).getUnitName());
-        holder.caloricityTextView.setText("Caloricity: " + items.get(position).getBaseCaloricity());
-        holder.priceTextView.setText("Price: " + items.get(position).getPricePerBW());
+        holder.caloricityTextView.setText(getApplicationContext()
+                .getString(R.string.caloricity_string,
+                        items.get(position).getBaseCaloricity().toString()));
+
+        holder.priceTextView.setText(getApplicationContext()
+                .getString(R.string.price_string,
+                        items.get(position).getPricePerBW().toString()));
 
         switch (holder.fuelNameTextView.getText().toString()) {
             case "Diesel":
@@ -137,7 +140,6 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
         if (expanded.get(position).equals(false)) {
             holder.additionalInfoLauout.setVisibility(View.GONE);
 
-
             if (!prefs.getBoolean("night_mode", false)) {
                 imageButton.setImageResource(R.drawable.ic_baseline_expand_more_24px);
             } else {
@@ -152,9 +154,6 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                 rotate.setFillAfter(true);
                 rotate.setInterpolator(new LinearInterpolator());
                 imageButton.startAnimation(rotate);
-
-
-
 
 
                 Animation animation = new SlideAnimationDown(holder.additionalInfoLauout,
@@ -183,7 +182,6 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
                 rotate.setFillAfter(true);
                 rotate.setInterpolator(new LinearInterpolator());
                 imageButton.startAnimation(rotate);
-
 
 
                 Animation animation = new SlideAnimationDown(holder.additionalInfoLauout,
@@ -249,6 +247,5 @@ public class FuelListAdapter extends RecyclerView.Adapter<FuelListAdapter.FuelVi
             priceTextView = itemView.findViewById(R.id.price);
         }
     }
-
 
 }
